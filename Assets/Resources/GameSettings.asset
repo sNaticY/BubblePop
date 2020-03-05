@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4611bdb451449189565f3fd0d15f99, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  BubbleSize: 150
+  BubbleLineSpace: 130
+  BubbleSettings:
+  - {fileID: 11400000, guid: 1ec209c6c82d74d37b18e715bf26bfc5, type: 2}
+  - {fileID: 11400000, guid: 3c8048dc42c484b909f3452d9966eef5, type: 2}
+  - {fileID: 11400000, guid: 568a8d8da17344010824c44b506538ac, type: 2}
+  - {fileID: 11400000, guid: 9cbc712fc722c4362935b8672607b8e5, type: 2}
+  - {fileID: 11400000, guid: f5c7f55934f634505aac85bf48850fd7, type: 2}
+  - {fileID: 11400000, guid: 72cf4ab5946de48d29dafb0a7c005930, type: 2}
+  - {fileID: 11400000, guid: f05caab2639484b8dade5100884c7971, type: 2}
+  - {fileID: 11400000, guid: a9ef485d175cf4a3793ae8994a6821c2, type: 2}
+  - {fileID: 11400000, guid: 20d18296c1f5647859647192395e8362, type: 2}
+  - {fileID: 11400000, guid: a8aba5773f04a4fcca94f1d5290d711a, type: 2}
