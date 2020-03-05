@@ -26,7 +26,7 @@ public class RenderBubbleColorSystem : ReactiveSystem<GameEntity>
         {
             var bubbleIndex = e.bubbleIndex.Value;
             var setting = _gameContext.GetEntityWithBubbleSetting(bubbleIndex);
-            e.view.Image.color = setting.bubbleSetting.Color;
+            e.view.Image.sprite = setting.bubbleSetting.Sprite;
         }
     }
 }

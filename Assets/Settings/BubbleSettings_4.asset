@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb0dd8f1a714f358ff2e29f2c9755eb, type: 3}
   m_Name: BubbleSettings_4
   m_EditorClassIdentifier: 
-  Color: {r: 0.79215693, g: 0.25490198, b: 0.2784314, a: 1}
+  Sprite: {fileID: 21300000, guid: 9806db1f6a36842f0918e20537738e5c, type: 3}
   Number: 4

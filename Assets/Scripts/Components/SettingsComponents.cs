@@ -15,6 +15,7 @@ public class BubbleSettingComponent : IComponent
 {
     [PrimaryEntityIndex] 
     public int Index;
-    public Color Color;
+
+    public Sprite Sprite;
     public int Number;
 }
