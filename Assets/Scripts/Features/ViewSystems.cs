@@ -6,7 +6,7 @@ public class ViewSystems : Feature
     {
         Add(new AddViewSystem(contexts));
         Add(new RenderPositionSystem(contexts));
-        Add(new RenderBubbleColorSystem(contexts));
+        Add(new RenderBubbleSpriteSystem(contexts));
         Add(new RenderBubbleTextSystem(contexts));
     }
 }

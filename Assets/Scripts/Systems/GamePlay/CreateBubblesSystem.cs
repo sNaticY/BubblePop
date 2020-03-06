@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CreateBubblesSystem : IInitializeSystem
 {
-    private GameContext _gameContext;
+    private readonly GameContext _gameContext;
     public CreateBubblesSystem(Contexts contexts)
     {
         _gameContext = contexts.game;
@@ -14,7 +14,7 @@ public class CreateBubblesSystem : IInitializeSystem
         {
             for (int j = 0; j < 6; j++)
             {
-                GameEntity bubble = _gameContext.CreateEntity();
+                var bubble = _gameContext.CreateEntity();
                 var slotX = j * 2 + i % 2;
                 var slotY = i;
                 bubble.AddBubbleSlotPos(new Vector2Int(slotX, slotY));

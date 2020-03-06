@@ -16,11 +16,14 @@ public static class GameComponentsLookup {
     public const int MoveComplete = 5;
     public const int Move = 6;
     public const int Mover = 7;
-    public const int Position = 8;
-    public const int Settings = 9;
-    public const int View = 10;
+    public const int NextLaunch = 8;
+    public const int Position = 9;
+    public const int PredictBubble = 10;
+    public const int Settings = 11;
+    public const int View = 12;
+    public const int WaitingForLaunch = 13;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "BubbleIndex",
@@ -31,9 +34,12 @@ public static class GameComponentsLookup {
         "MoveComplete",
         "Move",
         "Mover",
+        "NextLaunch",
         "Position",
+        "PredictBubble",
         "Settings",
-        "View"
+        "View",
+        "WaitingForLaunch"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -45,8 +51,11 @@ public static class GameComponentsLookup {
         typeof(MoveCompleteComponent),
         typeof(MoveComponent),
         typeof(MoverComponent),
+        typeof(NextLaunchComponent),
         typeof(PositionComponent),
+        typeof(PredictBubbleComponent),
         typeof(SettingsComponent),
-        typeof(ViewComponent)
+        typeof(ViewComponent),
+        typeof(WaitingForLaunchComponent)
     };
 }

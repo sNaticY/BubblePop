@@ -59,6 +59,7 @@ public partial class Contexts : Entitas.IContexts {
 public partial class Contexts {
 
     public const string BubbleSetting = "BubbleSetting";
+    public const string BubbleSlotPos = "BubbleSlotPos";
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
@@ -66,6 +67,11 @@ public partial class Contexts {
             BubbleSetting,
             game.GetGroup(GameMatcher.BubbleSetting),
             (e, c) => ((BubbleSettingComponent)c).Index));
+
+        game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, UnityEngine.Vector2Int>(
+            BubbleSlotPos,
+            game.GetGroup(GameMatcher.BubbleSlotPos),
+            (e, c) => ((BubbleSlotPosComponent)c).Value));
     }
 }
 
@@ -73,6 +79,10 @@ public static class ContextsExtensions {
 
     public static GameEntity GetEntityWithBubbleSetting(this GameContext context, int Index) {
         return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.BubbleSetting)).GetEntity(Index);
+    }
+
+    public static GameEntity GetEntityWithBubbleSlotPos(this GameContext context, UnityEngine.Vector2Int Value) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, UnityEngine.Vector2Int>)context.GetEntityIndex(Contexts.BubbleSlotPos)).GetEntity(Value);
     }
 }
 //------------------------------------------------------------------------------

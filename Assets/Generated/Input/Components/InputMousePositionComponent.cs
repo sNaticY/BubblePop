@@ -14,14 +14,14 @@ public partial class InputEntity {
     public void AddMousePosition(UnityEngine.Vector2 newPosition) {
         var index = InputComponentsLookup.MousePosition;
         var component = (MousePositionComponent)CreateComponent(index, typeof(MousePositionComponent));
-        component.position = newPosition;
+        component.Position = newPosition;
         AddComponent(index, component);
     }
 
     public void ReplaceMousePosition(UnityEngine.Vector2 newPosition) {
         var index = InputComponentsLookup.MousePosition;
         var component = (MousePositionComponent)CreateComponent(index, typeof(MousePositionComponent));
-        component.position = newPosition;
+        component.Position = newPosition;
         ReplaceComponent(index, component);
     }
 

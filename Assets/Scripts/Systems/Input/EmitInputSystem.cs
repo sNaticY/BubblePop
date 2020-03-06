@@ -20,18 +20,15 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem
 
     public void Execute()
     {
-        // mouse position
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         // left mouse button
         if (Input.GetMouseButtonDown(0))
-            _leftMouseEntity.ReplaceMouseDown(mousePosition);
+            _leftMouseEntity.ReplaceMouseDown(Input.mousePosition);
         
         if (Input.GetMouseButton(0))
-            _leftMouseEntity.ReplaceMousePosition(mousePosition);
+            _leftMouseEntity.ReplaceMousePosition(Input.mousePosition);
         
         if (Input.GetMouseButtonUp(0))
-            _leftMouseEntity.ReplaceMouseUp(mousePosition);
+            _leftMouseEntity.ReplaceMouseUp(Input.mousePosition);
         
     }
 }
