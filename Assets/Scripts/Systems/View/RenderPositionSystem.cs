@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RenderPositionSystem : ReactiveSystem<GameEntity>
 {
-    private Transform _container = GameObject.Find("Point_Origin").transform;
+    private readonly Transform _launchPoint = GameObject.Find("Point_Origin").transform;
+    private readonly Transform _nextLaunchPoint = GameObject.Find("Point_Next").transform;
 
     public RenderPositionSystem(Contexts contexts) : base(contexts.game)
     {
@@ -24,8 +25,14 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
     {
         foreach (GameEntity e in entities)
         {
-            if(e.isWaitingForLaunch)
-                e.bubbleView.GameObject.transform.position = _container.transform.position;
+            if (e.isWaitingForLaunch)
+            {
+                e.bubbleView.GameObject.transform.position = _launchPoint.transform.position;
+            }
+            else if (e.isNextLaunch)
+            {
+                e.bubbleView.GameObject.transform.position = _nextLaunchPoint.transform.position;
+            }
             else
             {
                 e.bubbleView.RectTransform.anchoredPosition = e.position.value;
