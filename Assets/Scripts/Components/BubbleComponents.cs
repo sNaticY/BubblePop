@@ -2,9 +2,10 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 [Game]
-public class ViewComponent : IComponent
+public class BubbleViewComponent : IComponent
 {
     public GameObject GameObject;
     public RectTransform RectTransform;
@@ -12,6 +13,14 @@ public class ViewComponent : IComponent
     public Text Text;
     public Collider2D Collider;
 }
+
+[Game, Unique]
+public class LineViewComponent : IComponent
+{
+    public UILineRenderer Line1;
+    public UILineRenderer Line2;
+}
+
 
 
 [Game]

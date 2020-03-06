@@ -60,7 +60,7 @@ public class RayCastSystem : ReactiveSystem<InputEntity>
                 {
                     var e = (GameEntity) secondHit.transform.gameObject.GetEntityLink().entity;
                     var angle = Vector2.SignedAngle(Vector2.up, secondHit.point - (Vector2) secondHit.transform.position);
-                    _inputContext.ReplaceRayCollision(e.bubbleSlotPos.Value, hit.point, hit.point, angle);
+                    _inputContext.ReplaceRayCollision(e.bubbleSlotPos.Value, hit.point, secondHit.point, angle);
                     return;
                 }
                 _inputContext.ReplaceRayCollision(new Vector2Int(-1, -1), null, Vector2.zero, 0);

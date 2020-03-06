@@ -13,7 +13,7 @@ public class RenderBubbleTextSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.View);
+        return context.CreateCollector(GameMatcher.BubbleView);
     }
 
     protected override bool Filter(GameEntity entity)
@@ -26,7 +26,7 @@ public class RenderBubbleTextSystem : ReactiveSystem<GameEntity>
         foreach (GameEntity e in entities)
         {
             var number = e.bubbleNumber.Value;
-            e.view.Text.text = number >= 1000 ? (number / 1000) + "K" : number.ToString();
+            e.bubbleView.Text.text = number >= 1000 ? (number / 1000) + "K" : number.ToString();
         }
     }
 }

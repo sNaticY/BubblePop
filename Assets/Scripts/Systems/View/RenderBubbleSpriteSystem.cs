@@ -12,7 +12,7 @@ public class RenderBubbleSpriteSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.View);
+        return context.CreateCollector(GameMatcher.BubbleView);
     }
 
     protected override bool Filter(GameEntity entity)
@@ -26,7 +26,7 @@ public class RenderBubbleSpriteSystem : ReactiveSystem<GameEntity>
         {
             var bubbleIndex = e.bubbleIndex.Value;
             var setting = _gameContext.GetEntityWithBubbleSetting(bubbleIndex);
-            e.view.Image.sprite = setting.bubbleSetting.Sprite;
+            e.bubbleView.Image.sprite = setting.bubbleSetting.Sprite;
         }
     }
 }

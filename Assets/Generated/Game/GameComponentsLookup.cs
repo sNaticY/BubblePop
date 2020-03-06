@@ -12,27 +12,30 @@ public static class GameComponentsLookup {
     public const int BubbleNumber = 1;
     public const int BubbleSetting = 2;
     public const int BubbleSlotPos = 3;
-    public const int Direction = 4;
-    public const int InSlotBubble = 5;
-    public const int MoveComplete = 6;
-    public const int Move = 7;
-    public const int Mover = 8;
-    public const int NextLaunch = 9;
-    public const int Position = 10;
-    public const int PredictBubble = 11;
-    public const int Settings = 12;
-    public const int View = 13;
-    public const int WaitingForLaunch = 14;
+    public const int BubbleView = 4;
+    public const int Direction = 5;
+    public const int InSlotBubble = 6;
+    public const int LineView = 7;
+    public const int MoveComplete = 8;
+    public const int Move = 9;
+    public const int Mover = 10;
+    public const int NextLaunch = 11;
+    public const int Position = 12;
+    public const int PredictBubble = 13;
+    public const int Settings = 14;
+    public const int WaitingForLaunch = 15;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "BubbleIndex",
         "BubbleNumber",
         "BubbleSetting",
         "BubbleSlotPos",
+        "BubbleView",
         "Direction",
         "InSlotBubble",
+        "LineView",
         "MoveComplete",
         "Move",
         "Mover",
@@ -40,7 +43,6 @@ public static class GameComponentsLookup {
         "Position",
         "PredictBubble",
         "Settings",
-        "View",
         "WaitingForLaunch"
     };
 
@@ -49,8 +51,10 @@ public static class GameComponentsLookup {
         typeof(BubbleNumberComponent),
         typeof(BubbleSettingComponent),
         typeof(BubbleSlotPosComponent),
+        typeof(BubbleViewComponent),
         typeof(DirectionComponent),
         typeof(InSlotBubbleComponent),
+        typeof(LineViewComponent),
         typeof(MoveCompleteComponent),
         typeof(MoveComponent),
         typeof(MoverComponent),
@@ -58,7 +62,6 @@ public static class GameComponentsLookup {
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
         typeof(SettingsComponent),
-        typeof(ViewComponent),
         typeof(WaitingForLaunchComponent)
     };
 }

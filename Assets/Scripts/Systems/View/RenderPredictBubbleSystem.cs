@@ -14,7 +14,7 @@ public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.View, GameMatcher.BubbleSlotPos));
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.BubbleView, GameMatcher.BubbleSlotPos));
     }
 
     protected override bool Filter(GameEntity entity)
@@ -28,12 +28,12 @@ public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
         {
             if (e.bubbleSlotPos.Value.x != -1)
             {
-                e.view.GameObject.SetActive(true);
-                e.view.Image.color = new Color(1, 1, 1, 0.5f);
+                e.bubbleView.GameObject.SetActive(true);
+                e.bubbleView.Image.color = new Color(1, 1, 1, 0.5f);
             }
             else
             {
-                e.view.GameObject.SetActive(false);
+                e.bubbleView.GameObject.SetActive(false);
             }
         }
         

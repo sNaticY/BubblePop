@@ -17,7 +17,7 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasPosition && entity.hasView;
+        return entity.hasPosition && entity.hasBubbleView;
     }
 
     protected override void Execute(List<GameEntity> entities)
@@ -25,10 +25,10 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
         foreach (GameEntity e in entities)
         {
             if(e.isWaitingForLaunch)
-                e.view.GameObject.transform.position = _container.transform.position;
+                e.bubbleView.GameObject.transform.position = _container.transform.position;
             else
             {
-                e.view.RectTransform.anchoredPosition = e.position.value;
+                e.bubbleView.RectTransform.anchoredPosition = e.position.value;
             }
         }
     }

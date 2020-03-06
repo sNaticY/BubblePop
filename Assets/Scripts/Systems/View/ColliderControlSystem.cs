@@ -12,7 +12,7 @@ public class ColliderControlSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.View);
+        return context.CreateCollector(GameMatcher.BubbleView);
     }
 
     protected override bool Filter(GameEntity entity)
@@ -24,7 +24,7 @@ public class ColliderControlSystem : ReactiveSystem<GameEntity>
     {
         foreach (GameEntity e in entities)
         {
-            e.view.Collider.enabled = e.isInSlotBubble;
+            e.bubbleView.Collider.enabled = e.isInSlotBubble;
         }
     }
 }
