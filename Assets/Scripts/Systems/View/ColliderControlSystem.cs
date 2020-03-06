@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public class RenderBubbleSpriteSystem : ReactiveSystem<GameEntity>
+public class ColliderControlSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _gameContext;
-    public RenderBubbleSpriteSystem(Contexts contexts) : base(contexts.game)
+    public ColliderControlSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }
@@ -24,9 +24,7 @@ public class RenderBubbleSpriteSystem : ReactiveSystem<GameEntity>
     {
         foreach (GameEntity e in entities)
         {
-            var bubbleIndex = e.bubbleIndex.Value;
-            var setting = _gameContext.GetEntityWithBubbleSetting(bubbleIndex);
-            e.view.Image.sprite = setting.bubbleSetting.Sprite;
+            e.view.Collider.enabled = e.isInSlotBubble;
         }
     }
 }

@@ -6,8 +6,6 @@ public class GameController : MonoBehaviour
     private Entitas.Systems _systems;
     private Contexts _contexts;
     
-    
-
     private void Start()
     {
         _contexts = Contexts.sharedInstance;

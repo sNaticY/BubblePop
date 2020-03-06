@@ -37,4 +37,5 @@ public class RayCollisionComponent : IComponent
     public Vector2Int SlotPos;
     public Vector2? BoundPos;
     public Vector2 CollisionPos;
+    public float Angle;
 }

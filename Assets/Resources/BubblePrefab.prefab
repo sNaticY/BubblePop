@@ -113,7 +113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 256
+  m_Text: 
 --- !u!114 &5674080830661750543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   RectTransform: {fileID: 5726790292886731066}
   Image: {fileID: 6984020904102773113}
   Text: {fileID: 5069631380029795573}
+  Collider: {fileID: 2883867839778181911}
 --- !u!58 &2883867839778181911
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -280,4 +281,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 73
+  m_Radius: 75

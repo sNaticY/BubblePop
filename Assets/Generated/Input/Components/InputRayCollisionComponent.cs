@@ -12,22 +12,22 @@ public partial class InputContext {
     public RayCollisionComponent rayCollision { get { return rayCollisionEntity.rayCollision; } }
     public bool hasRayCollision { get { return rayCollisionEntity != null; } }
 
-    public InputEntity SetRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos) {
+    public InputEntity SetRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos, float newAngle) {
         if (hasRayCollision) {
             throw new Entitas.EntitasException("Could not set RayCollision!\n" + this + " already has an entity with RayCollisionComponent!",
                 "You should check if the context already has a rayCollisionEntity before setting it or use context.ReplaceRayCollision().");
         }
         var entity = CreateEntity();
-        entity.AddRayCollision(newSlotPos, newBoundPos, newCollisionPos);
+        entity.AddRayCollision(newSlotPos, newBoundPos, newCollisionPos, newAngle);
         return entity;
     }
 
-    public void ReplaceRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos) {
+    public void ReplaceRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos, float newAngle) {
         var entity = rayCollisionEntity;
         if (entity == null) {
-            entity = SetRayCollision(newSlotPos, newBoundPos, newCollisionPos);
+            entity = SetRayCollision(newSlotPos, newBoundPos, newCollisionPos, newAngle);
         } else {
-            entity.ReplaceRayCollision(newSlotPos, newBoundPos, newCollisionPos);
+            entity.ReplaceRayCollision(newSlotPos, newBoundPos, newCollisionPos, newAngle);
         }
     }
 
@@ -49,21 +49,23 @@ public partial class InputEntity {
     public RayCollisionComponent rayCollision { get { return (RayCollisionComponent)GetComponent(InputComponentsLookup.RayCollision); } }
     public bool hasRayCollision { get { return HasComponent(InputComponentsLookup.RayCollision); } }
 
-    public void AddRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos) {
+    public void AddRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos, float newAngle) {
         var index = InputComponentsLookup.RayCollision;
         var component = (RayCollisionComponent)CreateComponent(index, typeof(RayCollisionComponent));
         component.SlotPos = newSlotPos;
         component.BoundPos = newBoundPos;
         component.CollisionPos = newCollisionPos;
+        component.Angle = newAngle;
         AddComponent(index, component);
     }
 
-    public void ReplaceRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos) {
+    public void ReplaceRayCollision(UnityEngine.Vector2Int newSlotPos, System.Nullable<UnityEngine.Vector2> newBoundPos, UnityEngine.Vector2 newCollisionPos, float newAngle) {
         var index = InputComponentsLookup.RayCollision;
         var component = (RayCollisionComponent)CreateComponent(index, typeof(RayCollisionComponent));
         component.SlotPos = newSlotPos;
         component.BoundPos = newBoundPos;
         component.CollisionPos = newCollisionPos;
+        component.Angle = newAngle;
         ReplaceComponent(index, component);
     }
 

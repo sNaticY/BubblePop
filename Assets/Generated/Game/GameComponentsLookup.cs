@@ -13,17 +13,18 @@ public static class GameComponentsLookup {
     public const int BubbleSetting = 2;
     public const int BubbleSlotPos = 3;
     public const int Direction = 4;
-    public const int MoveComplete = 5;
-    public const int Move = 6;
-    public const int Mover = 7;
-    public const int NextLaunch = 8;
-    public const int Position = 9;
-    public const int PredictBubble = 10;
-    public const int Settings = 11;
-    public const int View = 12;
-    public const int WaitingForLaunch = 13;
+    public const int InSlotBubble = 5;
+    public const int MoveComplete = 6;
+    public const int Move = 7;
+    public const int Mover = 8;
+    public const int NextLaunch = 9;
+    public const int Position = 10;
+    public const int PredictBubble = 11;
+    public const int Settings = 12;
+    public const int View = 13;
+    public const int WaitingForLaunch = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "BubbleIndex",
@@ -31,6 +32,7 @@ public static class GameComponentsLookup {
         "BubbleSetting",
         "BubbleSlotPos",
         "Direction",
+        "InSlotBubble",
         "MoveComplete",
         "Move",
         "Mover",
@@ -48,6 +50,7 @@ public static class GameComponentsLookup {
         typeof(BubbleSettingComponent),
         typeof(BubbleSlotPosComponent),
         typeof(DirectionComponent),
+        typeof(InSlotBubbleComponent),
         typeof(MoveCompleteComponent),
         typeof(MoveComponent),
         typeof(MoverComponent),

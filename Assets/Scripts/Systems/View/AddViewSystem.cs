@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class AddViewSystem : ReactiveSystem<GameEntity>
 {
-    readonly Transform _viewContainer = GameObject.Find("Panel_GameBoard").transform;
-    readonly GameContext _context;
+    private readonly Transform _viewContainer = GameObject.Find("Panel_GameBoard").transform;
+    private readonly GameContext _context;
 
     public AddViewSystem(Contexts contexts) : base(contexts.game)
     {
@@ -30,7 +30,7 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
             var prefab = Resources.Load<GameObject>("BubblePrefab");
             GameObject go = Object.Instantiate(prefab, _viewContainer);
             var view = go.GetComponent<BubbleView>();
-            e.AddView(go, view.RectTransform, view.Image, view.Text);
+            e.AddView(go, view.RectTransform, view.Image, view.Text, view.Collider);
             go.Link(e);
         }
     }

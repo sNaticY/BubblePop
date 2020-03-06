@@ -10,6 +10,7 @@ public class ViewComponent : IComponent
     public RectTransform RectTransform;
     public Image Image;
     public Text Text;
+    public Collider2D Collider;
 }
 
 
@@ -30,6 +31,12 @@ public class BubbleIndexComponent : IComponent
 public class BubbleNumberComponent : IComponent
 {
     public int Value;
+}
+
+[Game]
+public class InSlotBubbleComponent : IComponent
+{
+    
 }
 
 [Game, Unique]

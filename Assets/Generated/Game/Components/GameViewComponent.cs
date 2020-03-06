@@ -11,23 +11,25 @@ public partial class GameEntity {
     public ViewComponent view { get { return (ViewComponent)GetComponent(GameComponentsLookup.View); } }
     public bool hasView { get { return HasComponent(GameComponentsLookup.View); } }
 
-    public void AddView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText) {
+    public void AddView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider) {
         var index = GameComponentsLookup.View;
         var component = (ViewComponent)CreateComponent(index, typeof(ViewComponent));
         component.GameObject = newGameObject;
         component.RectTransform = newRectTransform;
         component.Image = newImage;
         component.Text = newText;
+        component.Collider = newCollider;
         AddComponent(index, component);
     }
 
-    public void ReplaceView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText) {
+    public void ReplaceView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider) {
         var index = GameComponentsLookup.View;
         var component = (ViewComponent)CreateComponent(index, typeof(ViewComponent));
         component.GameObject = newGameObject;
         component.RectTransform = newRectTransform;
         component.Image = newImage;
         component.Text = newText;
+        component.Collider = newCollider;
         ReplaceComponent(index, component);
     }
 

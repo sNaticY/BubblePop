@@ -18,12 +18,10 @@ public class CreateBubblesSystem : IInitializeSystem
                 var slotX = j * 2 + i % 2;
                 var slotY = i;
                 bubble.AddBubbleSlotPos(new Vector2Int(slotX, slotY));
-                var posX = _gameContext.settings.BubbleSize / 2 * slotX;
-                var posY = - _gameContext.settings.BubbleLineSpace * slotY;
-                bubble.AddPosition(new Vector2(posX, posY));
                 var bubbleIndex = UnityEngine.Random.Range(0, _gameContext.settings.BubbleTotalCount);
                 bubble.AddBubbleIndex(bubbleIndex);
                 bubble.AddBubbleNumber(_gameContext.GetEntityWithBubbleSetting(bubbleIndex).bubbleSetting.Number);
+                bubble.isInSlotBubble = true;
             }
         }
     }

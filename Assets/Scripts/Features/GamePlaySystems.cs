@@ -5,7 +5,9 @@ public class GamePlaySystems : Feature
         Add(new LoadSettingsSystem(contexts));
         
         Add(new CreateBubblesSystem(contexts));
+        Add(new BubblePositionSystem(contexts));
         Add(new PrepareLaunchSystem(contexts));
+        Add(new PredictBubbleSystem(contexts));
         Add(new MoveSystem(contexts));
         
     }

@@ -8,4 +8,5 @@ public class BubbleView : MonoBehaviour
     public RectTransform RectTransform;
     public Image Image;
     public Text Text;
+    public CircleCollider2D Collider;
 }
