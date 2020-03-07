@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8867975665234430374}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: AnimNode
   m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,13 +28,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5285043563782387083}
+  - {fileID: 1779676491759685456}
   m_Father: {fileID: 5726790292886731066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 198, y: 198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2309799887180340032
 GameObject:
@@ -62,11 +63,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2309799887180340032}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5726790292886731066}
+  m_Father: {fileID: 8867975665234430374}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -214,6 +215,7 @@ GameObject:
   - component: {fileID: 5726790292886731064}
   - component: {fileID: 5981310642648667140}
   - component: {fileID: 2883867839778181911}
+  - component: {fileID: 5388416836330391316}
   m_Layer: 5
   m_Name: BubblePrefab
   m_TagString: Ball
@@ -233,7 +235,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8867975665234430374}
-  - {fileID: 1779676491759685456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,3 +283,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 75
+--- !u!111 &5388416836330391316
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726790292886731067}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: eba5aad6728cd4c1f82250e8cc100144, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: eba5aad6728cd4c1f82250e8cc100144, type: 2}
+  - {fileID: 7400000, guid: 233a4c59e374c4f739f267de9477b983, type: 2}
+  - {fileID: 7400000, guid: 071c2e0ca72c849cc93a6ba91bec3f90, type: 2}
+  - {fileID: 7400000, guid: f28d2bf04f303449988a7686688e4d3d, type: 2}
+  - {fileID: 7400000, guid: 8da6836ef45814692ac63372d79f65f9, type: 2}
+  - {fileID: 7400000, guid: e6763fa355a5b4c43a7fe1960f1a47cd, type: 2}
+  - {fileID: 7400000, guid: 581c61fbca0164ec09b651b66238ddeb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
