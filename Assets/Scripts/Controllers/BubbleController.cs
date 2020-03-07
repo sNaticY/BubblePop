@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BubbleView : MonoBehaviour
+public class BubbleController : MonoBehaviour
 {
     public RectTransform RectTransform;
     public Image Image;

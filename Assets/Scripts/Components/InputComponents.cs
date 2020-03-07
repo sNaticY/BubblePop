@@ -39,3 +39,15 @@ public class RayCollisionComponent : IComponent
     public Vector2 CollisionPos;
     public float Angle;
 }
+
+[Input, Unique]
+public class SoundOnComponent : IComponent
+{
+    
+}
+
+[Input, Unique]
+public class VibrationOnComponent : IComponent
+{
+    
+}
