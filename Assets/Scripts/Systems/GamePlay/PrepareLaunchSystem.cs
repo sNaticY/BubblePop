@@ -6,7 +6,8 @@ using UnityEngine;
 public class PrepareLaunchSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
     private readonly GameContext _gameContext;
-    
+    private readonly RectTransform _launchPoint = GameObject.Find("Point_Origin").GetComponent<RectTransform>();
+    private readonly RectTransform _nextLaunchPoint = GameObject.Find("Point_Next").GetComponent<RectTransform>();
 
     public PrepareLaunchSystem(Contexts contexts) : base(contexts.game)
     {
@@ -23,7 +24,7 @@ public class PrepareLaunchSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.WaitingForLaunch);
+        return context.CreateCollector(GameMatcher.Reload);
 
     }
 
@@ -35,15 +36,16 @@ public class PrepareLaunchSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     protected override void Execute(List<GameEntity> entities)
     {
         _gameContext.nextLaunchEntity.isWaitingForLaunch = true;
-        _gameContext.isNextLaunch = false;
+        _gameContext.nextLaunchEntity.isNextLaunch = false;
         var bubble = CreateNewBubble();
         bubble.isNextLaunch = true;
+        _gameContext.isReload = false;
     }
 
     private GameEntity CreateNewBubble()
     {
         var bubble = _gameContext.CreateEntity();
-        bubble.AddPosition(new Vector2(0, 0));
+        bubble.AddPosition(_launchPoint.anchoredPosition);
         var bubbleIndex = UnityEngine.Random.Range(0, _gameContext.settings.BubbleTotalCount);
         bubble.AddBubbleIndex(bubbleIndex);
         bubble.AddBubbleNumber(_gameContext.GetEntityWithBubbleSetting(bubbleIndex).bubbleSetting.Number);

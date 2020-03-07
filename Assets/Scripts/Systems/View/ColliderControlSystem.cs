@@ -12,7 +12,7 @@ public class ColliderControlSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.BubbleView);
+        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.BubbleView));
     }
 
     protected override bool Filter(GameEntity entity)

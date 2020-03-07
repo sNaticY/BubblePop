@@ -11,7 +11,7 @@ public partial class GameEntity {
     public BubbleViewComponent bubbleView { get { return (BubbleViewComponent)GetComponent(GameComponentsLookup.BubbleView); } }
     public bool hasBubbleView { get { return HasComponent(GameComponentsLookup.BubbleView); } }
 
-    public void AddBubbleView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider) {
+    public void AddBubbleView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider, UnityEngine.GameObject newTrailEffect, UnityEngine.Animation newAnimation) {
         var index = GameComponentsLookup.BubbleView;
         var component = (BubbleViewComponent)CreateComponent(index, typeof(BubbleViewComponent));
         component.GameObject = newGameObject;
@@ -19,10 +19,12 @@ public partial class GameEntity {
         component.Image = newImage;
         component.Text = newText;
         component.Collider = newCollider;
+        component.TrailEffect = newTrailEffect;
+        component.Animation = newAnimation;
         AddComponent(index, component);
     }
 
-    public void ReplaceBubbleView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider) {
+    public void ReplaceBubbleView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider, UnityEngine.GameObject newTrailEffect, UnityEngine.Animation newAnimation) {
         var index = GameComponentsLookup.BubbleView;
         var component = (BubbleViewComponent)CreateComponent(index, typeof(BubbleViewComponent));
         component.GameObject = newGameObject;
@@ -30,6 +32,8 @@ public partial class GameEntity {
         component.Image = newImage;
         component.Text = newText;
         component.Collider = newCollider;
+        component.TrailEffect = newTrailEffect;
+        component.Animation = newAnimation;
         ReplaceComponent(index, component);
     }
 

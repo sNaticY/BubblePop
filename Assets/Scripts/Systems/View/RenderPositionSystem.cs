@@ -35,7 +35,7 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
             }
             else
             {
-                e.bubbleView.RectTransform.anchoredPosition = e.position.value;
+                e.bubbleView.RectTransform.anchoredPosition = e.position.Value;
             }
         }
     }

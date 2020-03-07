@@ -35,7 +35,6 @@ public class RayCastSystem : ReactiveSystem<InputEntity>
             
             if (hit.transform == null)
             {
-                Debug.LogWarning("Hit Transform == null");
                 continue;
             };
             

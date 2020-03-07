@@ -3,11 +3,6 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
-[Game]
-public class MoverComponent : IComponent
-{
-}
-
 [Input, Unique]
 public class LeftMouseComponent : IComponent
 {

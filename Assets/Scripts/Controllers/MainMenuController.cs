@@ -6,17 +6,18 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] private Canvas _uiCanvas;
-    [SerializeField] private SettingsMenuController _settingsPanel;
+    [SerializeField] private Canvas _uiCanvas = null;
+    [SerializeField] private SettingsMenuController _settingsController = null;
+    [SerializeField] private GameController _gameController = null;
     
-    [SerializeField] private Button _playButton;
-    [SerializeField] private Button _settingsButton;
+    [SerializeField] private Button _playButton = null;
+    [SerializeField] private Button _settingsButton = null;
     
     
     // Start is called before the first frame update
     private void Start()
     {
-        _settingsPanel.Initialize();
+        _settingsController.Initialize();
         
         _playButton.onClick.AddListener(OnPlayButtonClicked);
         _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
@@ -24,12 +25,14 @@ public class MainMenuController : MonoBehaviour
 
     private void OnSettingsButtonClicked()
     {
-        _settingsPanel.gameObject.SetActive(true);
+        _settingsController.gameObject.SetActive(true);
     }
 
     private void OnPlayButtonClicked()
     {
         _uiCanvas.gameObject.SetActive(false);
+        _gameController.Initialize();
+        
     }
 
     private void OnDestroy()

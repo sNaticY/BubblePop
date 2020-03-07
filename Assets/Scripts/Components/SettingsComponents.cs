@@ -8,6 +8,7 @@ public class SettingsComponent : IComponent
     public float BubbleSize;
     public float BubbleLineSpace;
     public int BubbleTotalCount;
+    public float BubbleSpeed;
 }
 
 [Game]

@@ -22,16 +22,6 @@ public class RenderBubbleScaleSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        foreach (GameEntity e in entities)
-        {
-            if (e.isNextLaunch)
-            {
-                e.bubbleView.RectTransform.localScale = Vector3.one * 0.75f;
-            }
-            else if(e.isWaitingForLaunch)
-            {
-                e.bubbleView.RectTransform.localScale = Vector3.one;
-            }
-        }
+        
     }
 }

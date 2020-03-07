@@ -15,7 +15,7 @@ public class LoadSettingsSystem : IInitializeSystem
     {
         var gameSettings = Resources.Load<GameSettings>("GameSettings");
         _gameContext.ReplaceSettings(gameSettings.BubbleSize, gameSettings.BubbleLineSpace,
-            gameSettings.BubbleSettings.Count);
+            gameSettings.BubbleSettings.Count, gameSettings.BubbleSpeed);
         for (var i = 0; i < gameSettings.BubbleSettings.Count; i++)
         {
             var settings = gameSettings.BubbleSettings[i];

@@ -8,6 +8,7 @@ namespace Settings
     {
         public float BubbleSize;
         public float BubbleLineSpace;
+        public float BubbleSpeed;
         public List<BubbleSettings> BubbleSettings;
     }
 }

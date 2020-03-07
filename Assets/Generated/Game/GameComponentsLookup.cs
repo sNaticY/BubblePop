@@ -10,38 +10,40 @@ public static class GameComponentsLookup {
 
     public const int BubbleIndex = 0;
     public const int BubbleNumber = 1;
-    public const int BubbleSetting = 2;
-    public const int BubbleSlotPos = 3;
-    public const int BubbleView = 4;
-    public const int Direction = 5;
-    public const int InSlotBubble = 6;
-    public const int LineView = 7;
-    public const int MoveComplete = 8;
-    public const int Move = 9;
-    public const int Mover = 10;
+    public const int BubbleSecondTargetPos = 2;
+    public const int BubbleSetting = 3;
+    public const int BubbleSlotPos = 4;
+    public const int BubbleTargetPos = 5;
+    public const int BubbleTargetSlot = 6;
+    public const int BubbleView = 7;
+    public const int CompleteMove = 8;
+    public const int InSlotBubble = 9;
+    public const int LineView = 10;
     public const int NextLaunch = 11;
     public const int Position = 12;
     public const int PredictBubble = 13;
-    public const int Settings = 14;
-    public const int WaitingForLaunch = 15;
+    public const int Reload = 14;
+    public const int Settings = 15;
+    public const int WaitingForLaunch = 16;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "BubbleIndex",
         "BubbleNumber",
+        "BubbleSecondTargetPos",
         "BubbleSetting",
         "BubbleSlotPos",
+        "BubbleTargetPos",
+        "BubbleTargetSlot",
         "BubbleView",
-        "Direction",
+        "CompleteMove",
         "InSlotBubble",
         "LineView",
-        "MoveComplete",
-        "Move",
-        "Mover",
         "NextLaunch",
         "Position",
         "PredictBubble",
+        "Reload",
         "Settings",
         "WaitingForLaunch"
     };
@@ -49,18 +51,19 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(BubbleIndexComponent),
         typeof(BubbleNumberComponent),
+        typeof(BubbleSecondTargetPosComponent),
         typeof(BubbleSettingComponent),
         typeof(BubbleSlotPosComponent),
+        typeof(BubbleTargetPosComponent),
+        typeof(BubbleTargetSlotComponent),
         typeof(BubbleViewComponent),
-        typeof(DirectionComponent),
+        typeof(CompleteMoveComponent),
         typeof(InSlotBubbleComponent),
         typeof(LineViewComponent),
-        typeof(MoveCompleteComponent),
-        typeof(MoveComponent),
-        typeof(MoverComponent),
         typeof(NextLaunchComponent),
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
+        typeof(ReloadComponent),
         typeof(SettingsComponent),
         typeof(WaitingForLaunchComponent)
     };

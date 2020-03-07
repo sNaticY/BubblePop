@@ -30,7 +30,7 @@ public class AddBubbleViewSystem : ReactiveSystem<GameEntity>
             var prefab = Resources.Load<GameObject>("BubblePrefab");
             GameObject go = Object.Instantiate(prefab, _viewContainer);
             var view = go.GetComponent<BubbleController>();
-            e.AddBubbleView(go, view.RectTransform, view.Image, view.Text, view.Collider);
+            e.AddBubbleView(go, view.RectTransform, view.Image, view.Text, view.Collider, view.TrailEffect, view.Animation);
             go.Link(e);
         }
     }

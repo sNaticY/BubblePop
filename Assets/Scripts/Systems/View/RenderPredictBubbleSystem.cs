@@ -6,7 +6,7 @@ using UnityEngine;
 public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _gameContext;
-    
+
     public RenderPredictBubbleSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
@@ -29,7 +29,9 @@ public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
             if (e.bubbleSlotPos.Value.x != -1)
             {
                 e.bubbleView.GameObject.SetActive(true);
+                e.bubbleView.Animation.Play("BubbleInitAnim");
                 e.bubbleView.Image.color = new Color(1, 1, 1, 0.5f);
+                e.bubbleView.TrailEffect.SetActive(false);
             }
             else
             {
@@ -38,4 +40,5 @@ public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
         }
         
     }
+
 }

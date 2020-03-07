@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class SettingsMenuController : MonoBehaviour
 {
-    [SerializeField] private Button _soundButton;
-    [SerializeField] private Button _vibrationButton;
-    [SerializeField] private Button _confirmButton;
+    [SerializeField] private Button _soundButton = null;
+    [SerializeField] private Button _vibrationButton = null;
+    [SerializeField] private Button _confirmButton = null;
 
-    [SerializeField] private GameObject _soundToggleOn;
-    [SerializeField] private GameObject _soundToggleOff;
+    [SerializeField] private GameObject _soundToggleOn = null;
+    [SerializeField] private GameObject _soundToggleOff = null;
 
-    [SerializeField] private GameObject _vibrationToggleOn;
-    [SerializeField] private GameObject _vibrationToggleOff;
+    [SerializeField] private GameObject _vibrationToggleOn = null;
+    [SerializeField] private GameObject _vibrationToggleOff = null;
 
     private bool _isSoundEnable = true;
     private bool _isVibrationEnable = true;
