@@ -20,22 +20,24 @@ public static class GameComponentsLookup {
     public const int BubbleTargetSlot = 9;
     public const int BubbleView = 10;
     public const int CompleteMove = 11;
-    public const int CurrentMergeNumber = 12;
-    public const int GameState = 13;
-    public const int InSlotBubble = 14;
-    public const int LineView = 15;
-    public const int MergeableCheck = 16;
-    public const int NewBubble = 17;
-    public const int NextLaunch = 18;
-    public const int Position = 19;
-    public const int PredictBubble = 20;
-    public const int ReadyToDestroy = 21;
-    public const int ReadyToMerge = 22;
-    public const int Settings = 23;
-    public const int Speed = 24;
-    public const int WaitingForLaunch = 25;
+    public const int ConnectToCeil = 12;
+    public const int CurrentMergeNumber = 13;
+    public const int GameState = 14;
+    public const int InSlotBubble = 15;
+    public const int LineView = 16;
+    public const int MergeableCheck = 17;
+    public const int NewBubble = 18;
+    public const int NextLaunch = 19;
+    public const int Position = 20;
+    public const int PredictBubble = 21;
+    public const int ReadyToDestroy = 22;
+    public const int ReadyToDropDown = 23;
+    public const int ReadyToMerge = 24;
+    public const int Settings = 25;
+    public const int Speed = 26;
+    public const int WaitingForLaunch = 27;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 28;
 
     public static readonly string[] componentNames = {
         "ActiveBubble",
@@ -50,6 +52,7 @@ public static class GameComponentsLookup {
         "BubbleTargetSlot",
         "BubbleView",
         "CompleteMove",
+        "ConnectToCeil",
         "CurrentMergeNumber",
         "GameState",
         "InSlotBubble",
@@ -60,6 +63,7 @@ public static class GameComponentsLookup {
         "Position",
         "PredictBubble",
         "ReadyToDestroy",
+        "ReadyToDropDown",
         "ReadyToMerge",
         "Settings",
         "Speed",
@@ -79,6 +83,7 @@ public static class GameComponentsLookup {
         typeof(BubbleTargetSlotComponent),
         typeof(BubbleViewComponent),
         typeof(CompleteMoveComponent),
+        typeof(ConnectToCeil),
         typeof(CurrentMergeNumber),
         typeof(GameStateComponent),
         typeof(InSlotBubbleComponent),
@@ -89,6 +94,7 @@ public static class GameComponentsLookup {
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
         typeof(ReadyToDestroy),
+        typeof(ReadyToDropDown),
         typeof(ReadyToMerge),
         typeof(SettingsComponent),
         typeof(SpeedComponent),

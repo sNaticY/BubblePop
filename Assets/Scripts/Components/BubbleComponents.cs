@@ -25,6 +25,18 @@ public class LineViewComponent : IComponent
 }
 
 [Game]
+public class ConnectToCeil : IComponent
+{
+    
+}
+
+[Game]
+public class ReadyToDropDown : IComponent
+{
+    
+}
+
+[Game]
 public class ActiveBubbleComponent : IComponent
 {
     

@@ -11,6 +11,7 @@ public class ViewSystems : Feature
         Add(new ColliderControlSystem(contexts));
         Add(new RenderPredictBubbleSystem(contexts));
         Add(new RenderLineViewSystem(contexts));
+        Add(new RenderDropDownSystem(contexts));
         Add(new PlayAnimationSystem(contexts));
     }
 }

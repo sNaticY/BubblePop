@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Entitas;
 
-public class CreateBubbleInSlotSystem : ReactiveSystem<GameEntity>
+public class CreateBubbleInSlotSystem : ReactiveSystem<GameEntity>, ICleanupSystem
 {
     private readonly GameContext _gameContext;
     
@@ -31,6 +31,16 @@ public class CreateBubbleInSlotSystem : ReactiveSystem<GameEntity>
             bubble.isInSlotBubble = true;
             bubble.AddAnimation(UnityEngine.Random.Range(0f, 0.4f), BubbleAnimation.Init);
             bubble.isActiveBubble = bubble.bubbleSlotPos.Value.y >= 0;
+        }
+    }
+
+    public void Cleanup()
+    {
+        var entities = _gameContext.GetEntities(GameMatcher.BubbleCreation);
+        for (var i = entities.Length - 1; i >= 0; i--)
+        {
+            var entity = entities[i];
+            entity.Destroy();
         }
     }
 }

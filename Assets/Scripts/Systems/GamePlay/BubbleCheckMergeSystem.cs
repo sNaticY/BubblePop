@@ -26,9 +26,11 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
     protected override void Execute(List<GameEntity> entities)
     {
         var newBubble = _gameContext.newBubbleEntity;
-        Dictionary<GameEntity, ReadyToMerge> mergeable = new Dictionary<GameEntity, ReadyToMerge>();
-        ProcessMergeableBubble(newBubble, newBubble.bubbleNumber.Value, newBubble.bubbleNumber.Value, mergeable);
-        foreach (var merge in mergeable)
+        
+        Dictionary<GameEntity, ReadyToMerge> readyToMerges = new Dictionary<GameEntity, ReadyToMerge>();
+        CalcMergeValue(newBubble, newBubble.bubbleNumber.Value, newBubble.bubbleNumber.Value, readyToMerges);
+        
+        foreach (var merge in readyToMerges)
         {
             merge.Key.ReplaceComponent(GameComponentsLookup.ReadyToMerge, merge.Value);
         }
@@ -36,64 +38,75 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
         newBubble.isNewBubble = false;
     }
 
-    private int ProcessMergeableBubble(GameEntity entity, int tempNumber, int number, Dictionary<GameEntity, ReadyToMerge> mergeableEntities)
+    private int CalcMergeValue(GameEntity entity, int fakeSelfNumber, int numberToMerge, Dictionary<GameEntity, ReadyToMerge> readyToMerges)
     {
-        List<GameEntity> mergeables = new List<GameEntity>();
-        CheckMergeableBubble(entity, tempNumber, number, ref mergeables);
+        // Find all connected same value bubbles
+        List<GameEntity> sameBubbles = new List<GameEntity>();
+        FindMergeableBubble(entity, fakeSelfNumber, numberToMerge, ref sameBubbles);
         
         foreach (var e in _gameContext.GetEntities(GameMatcher.MergeableCheck))
         {
             e.isMergeableCheck = false;
         }
-
-        var result = number * (int) Mathf.Pow(2, mergeables.Count - 1);
-        if (mergeables.Count > 1)
+        
+        var resultNumber = numberToMerge * (int) Mathf.Pow(2, sameBubbles.Count - 1);
+        
+        
+        // If more than 1 bubble to merge
+        // Calculate merging to which bubble generates bigger number
+        if (sameBubbles.Count > 1)
         {
-            var maxResult = result;
+            var maxResultNumber = resultNumber;
             GameEntity mergeCore = entity;
-            Dictionary<GameEntity, ReadyToMerge> maxSubMergeable = null;
-            foreach (var mergeable in mergeables)
+            Dictionary<GameEntity, ReadyToMerge> maxSubReadyToMerges = null;
+            
+            // For each bubble, check the value of sub merging, take biggest one
+            foreach (var bubble in sameBubbles)
             {
-                Dictionary<GameEntity, ReadyToMerge> subMergeable = new Dictionary<GameEntity, ReadyToMerge>();
-                var r = ProcessMergeableBubble(mergeable, result, result, subMergeable);
-                if (r == maxResult)
+                Dictionary<GameEntity, ReadyToMerge> subReadyToMerges = new Dictionary<GameEntity, ReadyToMerge>();
+                var r = CalcMergeValue(bubble, resultNumber, resultNumber, subReadyToMerges);
+                
+                // take the higher one as merge core if result equals
+                if (r == maxResultNumber)
                 {
-                    if (mergeable.bubbleSlotPos.Value.y < mergeCore.bubbleSlotPos.Value.y)
+                    if (bubble.bubbleSlotPos.Value.y < mergeCore.bubbleSlotPos.Value.y)
                     {
-                        maxResult = r;
-                        maxSubMergeable = subMergeable;
-                        mergeCore = mergeable;
+                        maxResultNumber = r;
+                        maxSubReadyToMerges = subReadyToMerges;
+                        mergeCore = bubble;
                     }
                 }
-                else if (r > maxResult)
+                else if (r > maxResultNumber)
                 {
-                    maxResult = r;
-                    maxSubMergeable = subMergeable;
-                    mergeCore = mergeable;
+                    maxResultNumber = r;
+                    maxSubReadyToMerges = subReadyToMerges;
+                    mergeCore = bubble;
+                }
+            }
+            
+            // Add most valuable merge approaches into readyToMerges
+            foreach (var bubble in sameBubbles)
+            {
+                if(bubble != mergeCore)
+                    readyToMerges.Add(bubble, new ReadyToMerge(){Number = fakeSelfNumber, TargetNumber = resultNumber, TargetSlot = mergeCore.bubbleSlotPos.Value});
+            }
+            
+            // Add most valuable sub merges
+            if (maxSubReadyToMerges != null)
+            {
+                foreach (var mergeable in maxSubReadyToMerges)
+                {
+                    readyToMerges.Add(mergeable.Key, mergeable.Value);
                 }
             }
 
-            foreach (var mergeable in mergeables)
-            {
-                if(mergeable != mergeCore)
-                    mergeableEntities.Add(mergeable, new ReadyToMerge(){Number = tempNumber, TargetNumber = result, TargetSlot = mergeCore.bubbleSlotPos.Value});
-            }
-
-            if (maxSubMergeable != null)
-            {
-                foreach (var mergeable in maxSubMergeable)
-                {
-                    mergeableEntities.Add(mergeable.Key, mergeable.Value);
-                }
-            }
-
-            result = maxResult;
+            resultNumber = maxResultNumber;
         }
 
-        return result;
+        return resultNumber;
     }
 
-    private void CheckMergeableBubble(GameEntity entity,int tempNumber, int number, ref List<GameEntity> mergeableEntities)
+    private void FindMergeableBubble(GameEntity entity,int tempNumber, int number, ref List<GameEntity> mergeableEntities)
     {
         entity.isMergeableCheck = true;
         if (entity.hasBubbleSlotPos && tempNumber == number)
@@ -112,17 +125,17 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
                 entity.bubbleSlotPos.Value + Vector2Int.left + Vector2Int.up);
 
             if (e30 != null && !e30.isMergeableCheck && e30.isActiveBubble)
-                CheckMergeableBubble(e30, e30.bubbleNumber.Value, number, ref mergeableEntities);
+                FindMergeableBubble(e30, e30.bubbleNumber.Value, number, ref mergeableEntities);
             if (e90 != null && !e90.isMergeableCheck && e90.isActiveBubble)
-                CheckMergeableBubble(e90, e90.bubbleNumber.Value, number, ref mergeableEntities);
+                FindMergeableBubble(e90, e90.bubbleNumber.Value, number, ref mergeableEntities);
             if (e150 != null && !e150.isMergeableCheck && e150.isActiveBubble)
-                 CheckMergeableBubble(e150, e150.bubbleNumber.Value, number, ref mergeableEntities);
+                 FindMergeableBubble(e150, e150.bubbleNumber.Value, number, ref mergeableEntities);
             if (e210 != null && !e210.isMergeableCheck && e210.isActiveBubble)
-                CheckMergeableBubble(e210, e210.bubbleNumber.Value, number, ref mergeableEntities);
+                FindMergeableBubble(e210, e210.bubbleNumber.Value, number, ref mergeableEntities);
             if (e270 != null && !e270.isMergeableCheck && e270.isActiveBubble)
-                 CheckMergeableBubble(e270, e270.bubbleNumber.Value, number, ref mergeableEntities);
+                 FindMergeableBubble(e270, e270.bubbleNumber.Value, number, ref mergeableEntities);
             if (e330 != null && !e330.isMergeableCheck && e330.isActiveBubble)
-                 CheckMergeableBubble(e330, e330.bubbleNumber.Value, number, ref mergeableEntities);
+                 FindMergeableBubble(e330, e330.bubbleNumber.Value, number, ref mergeableEntities);
 
         }
     }

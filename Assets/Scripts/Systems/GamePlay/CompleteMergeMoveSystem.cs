@@ -28,19 +28,10 @@ public class CompleteMergeMoveSystem : ReactiveSystem<GameEntity>
         {
             e.isCompleteMove = false;
             var targetEntity = _gameContext.GetEntityWithBubbleSlotPos(e.readyToMerge.TargetSlot);
-            if (targetEntity != null)
-            {
-                if (targetEntity.bubbleNumber.Value < e.readyToMerge.TargetNumber)
-                {
-                    targetEntity.ReplaceBubbleNumber(targetEntity.bubbleNumber.Value * 2);
-                }
-
-                if (targetEntity.bubbleNumber.Value == e.readyToMerge.TargetNumber)
-                {
-                    _gameContext.ReplaceCurrentMergeNumber(targetEntity.bubbleNumber.Value);
-                }
-            }
+            targetEntity?.ReplaceBubbleNumber(e.readyToMerge.TargetNumber);
             _gameContext.ReplaceGameState(GameState.Merge);
+            
+            e.RemoveReadyToMerge();
             e.isReadyToDestroy = true;
         }
     }

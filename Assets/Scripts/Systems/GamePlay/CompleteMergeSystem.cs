@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 public class CompleteMergeSystem : ReactiveSystem<GameEntity>
 {
@@ -22,9 +23,25 @@ public class CompleteMergeSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        if (_gameContext.GetEntitiesWithReadyToMerge(_gameContext.currentMergeNumber.Value).Count == 0)
+        Debug.Log("Call Merge --------- ");
+        while (true)
         {
-            _gameContext.ReplaceGameState(GameState.Scroll);
+            // Debug.Log("Cur Merge Number = " + _gameContext.currentMergeNumber.Value);
+            if (_gameContext.currentMergeNumber.Value >= 2048)
+            {
+                _gameContext.ReplaceGameState(GameState.Scroll);
+                return;
+            }
+            var readyToMerge = _gameContext.GetEntitiesWithReadyToMerge(_gameContext.currentMergeNumber.Value).Count;
+            // Debug.Log("Ready to Merge Number = " + readyToMerge);
+            if (readyToMerge == 0)
+            {
+                _gameContext.ReplaceCurrentMergeNumber(_gameContext.currentMergeNumber.Value * 2);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ public class BubbleMoveToPosSystem : IExecuteSystem, ICleanupSystem
     {
         foreach (GameEntity e in _movableBubbles.GetEntities())
         {
-            if (e.hasBubbleTargetPos)
+            if (e.hasBubbleTargetPos && e.hasPosition)
             {
                 Vector2 dir = e.bubbleTargetPos.Value - e.position.Value;
                 Vector2 newPosition = e.position.Value +
@@ -35,7 +35,7 @@ public class BubbleMoveToPosSystem : IExecuteSystem, ICleanupSystem
                     }
                 }
             }
-            else if(e.hasBubbleSecondTargetPos)
+            else if(e.hasBubbleSecondTargetPos && e.hasPosition)
             {
                 var dir = e.bubbleSecondTargetPos.Value - e.position.Value;
                 Vector2 newPosition = e.position.Value +

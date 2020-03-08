@@ -32,6 +32,14 @@ public class BubbleController : MonoBehaviour
         Animation.Play(animationName);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("BoundDown"))
+        {
+            ((GameEntity) gameObject.GetEntityLink().entity).isReadyToDestroy = true;
+        }
+    }
+
     private void OnDestroy()
     {
         gameObject.Unlink();

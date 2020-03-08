@@ -6,6 +6,7 @@ public class MergeFeature : Feature
         Add(new BubbleMergeSystem(contexts));
         Add(new CompleteMergeMoveSystem(contexts));
         Add(new BubbleExplodeSystem(contexts));
+        Add(new BubbleDropDownSystem(contexts));
         Add(new CompleteMergeSystem(contexts));
     }
 }
