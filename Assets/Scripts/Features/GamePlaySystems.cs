@@ -10,8 +10,9 @@ public class GamePlaySystems : Feature
         Add(new PredictBubbleSystem(contexts));
         Add(new BubbleMoveToSlotSystem(contexts));
         Add(new BubbleMoveToPosSystem(contexts));
+        Add(new BubbleCheckMergeSystem(contexts));
+        Add(new BubbleMergeSystem(contexts));
         Add(new BubbleCompleteMoveSystem(contexts));
-        // Add(new MoveSystem(contexts));
 
     }
 }

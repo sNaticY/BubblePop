@@ -10,7 +10,7 @@ public class BubbleMoveToSlotSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.BubbleTargetSlot, GameMatcher.CompleteMove));
+        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.BubbleTargetSlot));
     }
 
     protected override bool Filter(GameEntity entity)

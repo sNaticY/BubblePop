@@ -60,29 +60,39 @@ public partial class Contexts {
 
     public const string BubbleSetting = "BubbleSetting";
     public const string BubbleSlotPos = "BubbleSlotPos";
+    public const string ReadyToMerge = "ReadyToMerge";
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
         game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, int>(
             BubbleSetting,
             game.GetGroup(GameMatcher.BubbleSetting),
-            (e, c) => ((BubbleSettingComponent)c).Index));
+            (e, c) => ((BubbleSettingComponent)c).Number));
 
         game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, UnityEngine.Vector2Int>(
             BubbleSlotPos,
             game.GetGroup(GameMatcher.BubbleSlotPos),
             (e, c) => ((BubbleSlotPosComponent)c).Value));
+
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
+            ReadyToMerge,
+            game.GetGroup(GameMatcher.ReadyToMerge),
+            (e, c) => ((ReadyToMerge)c).Number));
     }
 }
 
 public static class ContextsExtensions {
 
-    public static GameEntity GetEntityWithBubbleSetting(this GameContext context, int Index) {
-        return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.BubbleSetting)).GetEntity(Index);
+    public static GameEntity GetEntityWithBubbleSetting(this GameContext context, int Number) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.BubbleSetting)).GetEntity(Number);
     }
 
     public static GameEntity GetEntityWithBubbleSlotPos(this GameContext context, UnityEngine.Vector2Int Value) {
         return ((Entitas.PrimaryEntityIndex<GameEntity, UnityEngine.Vector2Int>)context.GetEntityIndex(Contexts.BubbleSlotPos)).GetEntity(Value);
+    }
+
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithReadyToMerge(this GameContext context, int Number) {
+        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.ReadyToMerge)).GetEntities(Number);
     }
 }
 //------------------------------------------------------------------------------

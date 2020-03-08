@@ -50,6 +50,12 @@ public class CompleteMoveComponent : IComponent
 }
 
 [Game]
+public class ReadyToFire : IComponent
+{
+    
+}
+
+[Game]
 public class PositionComponent : IComponent
 {
     public Vector2 Value;
@@ -63,9 +69,36 @@ public class BubbleSlotPosComponent : IComponent
 }
 
 [Game]
-public class BubbleIndexComponent : IComponent
+public class NewBubbleInSlot : IComponent
+{
+    
+}
+
+[Game]
+public class ReadyToMerge : IComponent
+{
+    [EntityIndex]
+    public int Number;
+    public int TargetNumber;
+    public Vector2Int TargetSlot;
+}
+
+[Game]
+public class ReadyToDestroy : IComponent
+{
+    
+}
+
+[Game, Unique]
+public class CurrentMergeNumber : IComponent
 {
     public int Value;
+}
+
+[Game]
+public class MergeableCheck : IComponent
+{
+    
 }
 
 [Game]

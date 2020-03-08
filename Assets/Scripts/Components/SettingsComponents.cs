@@ -14,9 +14,7 @@ public class SettingsComponent : IComponent
 [Game]
 public class BubbleSettingComponent : IComponent
 {
-    [PrimaryEntityIndex] 
-    public int Index;
-
     public Sprite Sprite;
+    [PrimaryEntityIndex] 
     public int Number;
 }

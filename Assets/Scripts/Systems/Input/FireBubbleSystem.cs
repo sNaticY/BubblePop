@@ -22,15 +22,25 @@ public class FireBubbleSystem : ReactiveSystem<InputEntity>
 
     protected override bool Filter(InputEntity entity)
     {
-        return entity.hasMouseUp && _inputContext.hasRayCollision && _gameContext.isWaitingForLaunch;
+        return entity.hasMouseUp && _inputContext.hasRayCollision && _gameContext.isWaitingForLaunch && _gameContext.predictBubbleEntity.hasBubbleSlotPos;
     }
 
     protected override void Execute(List<InputEntity> entities)
     {
         var predictEntity = _gameContext.predictBubbleEntity;
-        _gameContext.waitingForLaunchEntity.AddBubbleTargetSlot(_inputContext.rayCollision.BoundPos - (_gameBoard.position - new Vector3(_gameBoard.sizeDelta.x / 2, 0)), predictEntity.position.Value, predictEntity.bubbleSlotPos.Value);
+        if (predictEntity.bubbleSlotPos.Value.x != -1 && _gameContext.waitingForLaunchEntity.isReadyToFire)
+        {
+            var bubbleEntity = _gameContext.waitingForLaunchEntity;
+            bubbleEntity.AddBubbleTargetSlot(
+                _inputContext.rayCollision.BoundPos -
+                (_gameBoard.position - new Vector3(_gameBoard.sizeDelta.x / 2, 0)), predictEntity.position.Value,
+                predictEntity.bubbleSlotPos.Value);
+            bubbleEntity.isReadyToFire = false;
+            bubbleEntity.isWaitingForLaunch = false;
+            _gameContext.isReload = true;
+        }
+
         _inputContext.ReplaceRayCollision(new Vector2Int(-1, -1), null, Vector2.zero, 0);
-        _gameContext.waitingForLaunchEntity.isWaitingForLaunch = false;
-        _gameContext.isReload = true;
+        
     }
 }

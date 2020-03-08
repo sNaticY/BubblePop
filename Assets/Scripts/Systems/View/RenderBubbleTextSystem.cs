@@ -13,12 +13,12 @@ public class RenderBubbleTextSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.BubbleView);
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.BubbleView, GameMatcher.BubbleNumber));
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasBubbleIndex && !entity.isPredictBubble;
+        return entity.hasBubbleNumber && !entity.isPredictBubble;
     }
 
     protected override void Execute(List<GameEntity> entities)

@@ -8,28 +8,32 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int BubbleIndex = 0;
-    public const int BubbleNumber = 1;
-    public const int BubbleSecondTargetPos = 2;
-    public const int BubbleSetting = 3;
-    public const int BubbleSlotPos = 4;
-    public const int BubbleTargetPos = 5;
-    public const int BubbleTargetSlot = 6;
-    public const int BubbleView = 7;
-    public const int CompleteMove = 8;
+    public const int BubbleNumber = 0;
+    public const int BubbleSecondTargetPos = 1;
+    public const int BubbleSetting = 2;
+    public const int BubbleSlotPos = 3;
+    public const int BubbleTargetPos = 4;
+    public const int BubbleTargetSlot = 5;
+    public const int BubbleView = 6;
+    public const int CompleteMove = 7;
+    public const int CurrentMergeNumber = 8;
     public const int InSlotBubble = 9;
     public const int LineView = 10;
-    public const int NextLaunch = 11;
-    public const int Position = 12;
-    public const int PredictBubble = 13;
-    public const int Reload = 14;
-    public const int Settings = 15;
-    public const int WaitingForLaunch = 16;
+    public const int MergeableCheck = 11;
+    public const int NewBubbleInSlot = 12;
+    public const int NextLaunch = 13;
+    public const int Position = 14;
+    public const int PredictBubble = 15;
+    public const int ReadyToDestroy = 16;
+    public const int ReadyToFire = 17;
+    public const int ReadyToMerge = 18;
+    public const int Reload = 19;
+    public const int Settings = 20;
+    public const int WaitingForLaunch = 21;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
-        "BubbleIndex",
         "BubbleNumber",
         "BubbleSecondTargetPos",
         "BubbleSetting",
@@ -38,18 +42,23 @@ public static class GameComponentsLookup {
         "BubbleTargetSlot",
         "BubbleView",
         "CompleteMove",
+        "CurrentMergeNumber",
         "InSlotBubble",
         "LineView",
+        "MergeableCheck",
+        "NewBubbleInSlot",
         "NextLaunch",
         "Position",
         "PredictBubble",
+        "ReadyToDestroy",
+        "ReadyToFire",
+        "ReadyToMerge",
         "Reload",
         "Settings",
         "WaitingForLaunch"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(BubbleIndexComponent),
         typeof(BubbleNumberComponent),
         typeof(BubbleSecondTargetPosComponent),
         typeof(BubbleSettingComponent),
@@ -58,11 +67,17 @@ public static class GameComponentsLookup {
         typeof(BubbleTargetSlotComponent),
         typeof(BubbleViewComponent),
         typeof(CompleteMoveComponent),
+        typeof(CurrentMergeNumber),
         typeof(InSlotBubbleComponent),
         typeof(LineViewComponent),
+        typeof(MergeableCheck),
+        typeof(NewBubbleInSlot),
         typeof(NextLaunchComponent),
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
+        typeof(ReadyToDestroy),
+        typeof(ReadyToFire),
+        typeof(ReadyToMerge),
         typeof(ReloadComponent),
         typeof(SettingsComponent),
         typeof(WaitingForLaunchComponent)

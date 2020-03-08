@@ -11,19 +11,17 @@ public partial class GameEntity {
     public BubbleSettingComponent bubbleSetting { get { return (BubbleSettingComponent)GetComponent(GameComponentsLookup.BubbleSetting); } }
     public bool hasBubbleSetting { get { return HasComponent(GameComponentsLookup.BubbleSetting); } }
 
-    public void AddBubbleSetting(int newIndex, UnityEngine.Sprite newSprite, int newNumber) {
+    public void AddBubbleSetting(UnityEngine.Sprite newSprite, int newNumber) {
         var index = GameComponentsLookup.BubbleSetting;
         var component = (BubbleSettingComponent)CreateComponent(index, typeof(BubbleSettingComponent));
-        component.Index = newIndex;
         component.Sprite = newSprite;
         component.Number = newNumber;
         AddComponent(index, component);
     }
 
-    public void ReplaceBubbleSetting(int newIndex, UnityEngine.Sprite newSprite, int newNumber) {
+    public void ReplaceBubbleSetting(UnityEngine.Sprite newSprite, int newNumber) {
         var index = GameComponentsLookup.BubbleSetting;
         var component = (BubbleSettingComponent)CreateComponent(index, typeof(BubbleSettingComponent));
-        component.Index = newIndex;
         component.Sprite = newSprite;
         component.Number = newNumber;
         ReplaceComponent(index, component);

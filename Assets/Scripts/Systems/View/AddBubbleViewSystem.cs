@@ -15,12 +15,12 @@ public class AddBubbleViewSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.BubbleIndex);
+        return context.CreateCollector(GameMatcher.BubbleNumber);
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasBubbleIndex && !entity.hasBubbleView;
+        return entity.hasBubbleNumber && !entity.hasBubbleView;
     }
 
     protected override void Execute(List<GameEntity> entities)

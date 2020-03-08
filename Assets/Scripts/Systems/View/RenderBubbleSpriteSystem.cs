@@ -12,20 +12,19 @@ public class RenderBubbleSpriteSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.BubbleView);
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.BubbleView, GameMatcher.BubbleNumber));
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasBubbleIndex;
+        return entity.hasBubbleNumber;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
         foreach (GameEntity e in entities)
         {
-            var bubbleIndex = e.bubbleIndex.Value;
-            var setting = _gameContext.GetEntityWithBubbleSetting(bubbleIndex);
+            var setting = _gameContext.GetEntityWithBubbleSetting(e.bubbleNumber.Value);
             e.bubbleView.Image.sprite = setting.bubbleSetting.Sprite;
         }
     }

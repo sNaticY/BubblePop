@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BubbleSettings_512
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: d827a920d534b45d3aa98f6ad86856b2, type: 3}
-  Number: 128
+  Number: 512

@@ -10,8 +10,7 @@ public class PredictBubbleSystem : ReactiveSystem<InputEntity>, IInitializeSyste
     {
         var bubble = _gameContext.CreateEntity();
         bubble.AddBubbleSlotPos(new Vector2Int(-1, -1));
-        bubble.AddBubbleIndex(0);
-        bubble.AddBubbleNumber(_gameContext.GetEntityWithBubbleSetting(0).bubbleSetting.Number);
+        bubble.AddBubbleNumber(_gameContext.GetEntityWithBubbleSetting(2).bubbleSetting.Number);
         bubble.isPredictBubble = true;
     }
     

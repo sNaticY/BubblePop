@@ -19,14 +19,14 @@ public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasBubbleIndex && entity.isPredictBubble;
+        return entity.hasBubbleNumber && entity.isPredictBubble;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
         foreach (GameEntity e in entities)
         {
-            if (e.bubbleSlotPos.Value.x != -1)
+            if (e.hasBubbleSlotPos && e.bubbleSlotPos.Value.x != -1)
             {
                 e.bubbleView.GameObject.SetActive(true);
                 e.bubbleView.Animation.Play("BubbleInitAnim");

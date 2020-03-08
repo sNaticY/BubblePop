@@ -12,19 +12,19 @@ public class ColliderControlSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.BubbleView));
+        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.InSlotBubble));
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasBubbleIndex;
+        return entity.hasBubbleNumber;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
         foreach (GameEntity e in entities)
         {
-            e.bubbleView.Collider.enabled = e.isInSlotBubble;
+            e.bubbleView.Collider.enabled = true;
         }
     }
 }

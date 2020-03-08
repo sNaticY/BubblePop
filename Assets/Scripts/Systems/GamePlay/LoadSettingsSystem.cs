@@ -20,7 +20,7 @@ public class LoadSettingsSystem : IInitializeSystem
         {
             var settings = gameSettings.BubbleSettings[i];
             var settingEntity = _gameContext.CreateEntity();
-            settingEntity.ReplaceBubbleSetting(i, settings.Sprite, settings.Number);
+            settingEntity.ReplaceBubbleSetting(settings.Sprite, settings.Number);
         }
     }
 }
