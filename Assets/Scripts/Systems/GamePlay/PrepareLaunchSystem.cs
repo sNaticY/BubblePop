@@ -42,6 +42,8 @@ public class PrepareLaunchSystem : ReactiveSystem<GameEntity>, IInitializeSystem
         var newBubble = CreateNewBubble();
         newBubble.isNextLaunch = true;
         newBubble.ReplaceAnimation(0, BubbleAnimation.InitSmall);
+        
+        _gameContext.predictBubbleEntity.ReplaceBubbleNumber(bubble.bubbleNumber.Value);
     }
 
     private GameEntity CreateNewBubble()
