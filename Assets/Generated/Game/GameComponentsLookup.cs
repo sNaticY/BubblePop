@@ -8,33 +8,41 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int BubbleNumber = 0;
-    public const int BubbleSecondTargetPos = 1;
-    public const int BubbleSetting = 2;
-    public const int BubbleSlotPos = 3;
-    public const int BubbleTargetPos = 4;
-    public const int BubbleTargetSlot = 5;
-    public const int BubbleView = 6;
-    public const int CompleteMove = 7;
-    public const int CurrentMergeNumber = 8;
-    public const int InSlotBubble = 9;
-    public const int LineView = 10;
-    public const int MergeableCheck = 11;
-    public const int NewBubbleInSlot = 12;
-    public const int NextLaunch = 13;
-    public const int Position = 14;
-    public const int PredictBubble = 15;
-    public const int ReadyToDestroy = 16;
-    public const int ReadyToFire = 17;
-    public const int ReadyToMerge = 18;
-    public const int Reload = 19;
-    public const int Settings = 20;
-    public const int WaitingForLaunch = 21;
+    public const int ActiveBubble = 0;
+    public const int Animation = 1;
+    public const int BubbleCreation = 2;
+    public const int BubbleNumber = 3;
+    public const int BubbleScrollToSlot = 4;
+    public const int BubbleSecondTargetPos = 5;
+    public const int BubbleSetting = 6;
+    public const int BubbleSlotPos = 7;
+    public const int BubbleTargetPos = 8;
+    public const int BubbleTargetSlot = 9;
+    public const int BubbleView = 10;
+    public const int CompleteMove = 11;
+    public const int CurrentMergeNumber = 12;
+    public const int GameState = 13;
+    public const int InSlotBubble = 14;
+    public const int LineView = 15;
+    public const int MergeableCheck = 16;
+    public const int NewBubble = 17;
+    public const int NextLaunch = 18;
+    public const int Position = 19;
+    public const int PredictBubble = 20;
+    public const int ReadyToDestroy = 21;
+    public const int ReadyToMerge = 22;
+    public const int Settings = 23;
+    public const int Speed = 24;
+    public const int WaitingForLaunch = 25;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
+        "ActiveBubble",
+        "Animation",
+        "BubbleCreation",
         "BubbleNumber",
+        "BubbleScrollToSlot",
         "BubbleSecondTargetPos",
         "BubbleSetting",
         "BubbleSlotPos",
@@ -43,23 +51,27 @@ public static class GameComponentsLookup {
         "BubbleView",
         "CompleteMove",
         "CurrentMergeNumber",
+        "GameState",
         "InSlotBubble",
         "LineView",
         "MergeableCheck",
-        "NewBubbleInSlot",
+        "NewBubble",
         "NextLaunch",
         "Position",
         "PredictBubble",
         "ReadyToDestroy",
-        "ReadyToFire",
         "ReadyToMerge",
-        "Reload",
         "Settings",
+        "Speed",
         "WaitingForLaunch"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ActiveBubbleComponent),
+        typeof(AnimationComponent),
+        typeof(BubbleCreationComponent),
         typeof(BubbleNumberComponent),
+        typeof(BubbleScrollToSlotComponent),
         typeof(BubbleSecondTargetPosComponent),
         typeof(BubbleSettingComponent),
         typeof(BubbleSlotPosComponent),
@@ -68,18 +80,18 @@ public static class GameComponentsLookup {
         typeof(BubbleViewComponent),
         typeof(CompleteMoveComponent),
         typeof(CurrentMergeNumber),
+        typeof(GameStateComponent),
         typeof(InSlotBubbleComponent),
         typeof(LineViewComponent),
         typeof(MergeableCheck),
-        typeof(NewBubbleInSlot),
+        typeof(NewBubbleComponent),
         typeof(NextLaunchComponent),
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
         typeof(ReadyToDestroy),
-        typeof(ReadyToFire),
         typeof(ReadyToMerge),
-        typeof(ReloadComponent),
         typeof(SettingsComponent),
+        typeof(SpeedComponent),
         typeof(WaitingForLaunchComponent)
     };
 }

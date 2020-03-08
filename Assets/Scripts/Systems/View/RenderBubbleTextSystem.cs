@@ -26,7 +26,7 @@ public class RenderBubbleTextSystem : ReactiveSystem<GameEntity>
         foreach (GameEntity e in entities)
         {
             var number = e.bubbleNumber.Value;
-            e.bubbleView.Text.text = number >= 1000 ? (number / 1000) + "K" : number.ToString();
+            e.bubbleView.Value.Text.text = number >= 1000 ? (number / 1000) + "K" : number.ToString();
         }
     }
 }

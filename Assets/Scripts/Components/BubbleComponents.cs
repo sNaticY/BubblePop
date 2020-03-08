@@ -5,15 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
 [Game]
+public class BubbleCreationComponent : IComponent
+{
+    public int Number;
+    public Vector2Int Slot;
+}
+
+[Game]
 public class BubbleViewComponent : IComponent
 {
-    public GameObject GameObject;
-    public RectTransform RectTransform;
-    public Image Image;
-    public Text Text;
-    public Collider2D Collider;
-    public GameObject TrailEffect;
-    public Animation Animation;
+    public BubbleController Value;
 }
 
 [Game, Unique]
@@ -24,11 +25,30 @@ public class LineViewComponent : IComponent
 }
 
 [Game]
+public class ActiveBubbleComponent : IComponent
+{
+    
+}
+
+[Game]
 public class BubbleTargetSlotComponent : IComponent
 {
     public Vector2? BoundPos;
     public Vector2 TargetPos;
     public Vector2Int TargetSlot;
+}
+
+[Game]
+public class BubbleScrollToSlotComponent : IComponent
+{
+    public Vector2Int Value;
+}
+
+[Game]
+public class AnimationComponent : IComponent
+{
+    public float Delay;
+    public string AnimationName;
 }
 
 [Game]
@@ -50,15 +70,15 @@ public class CompleteMoveComponent : IComponent
 }
 
 [Game]
-public class ReadyToFire : IComponent
-{
-    
-}
-
-[Game]
 public class PositionComponent : IComponent
 {
     public Vector2 Value;
+}
+
+[Game]
+public class SpeedComponent : IComponent
+{
+    public float Value;
 }
 
 [Game]
@@ -68,8 +88,8 @@ public class BubbleSlotPosComponent : IComponent
     public Vector2Int Value;
 }
 
-[Game]
-public class NewBubbleInSlot : IComponent
+[Game, Unique]
+public class NewBubbleComponent : IComponent
 {
     
 }
@@ -127,12 +147,6 @@ public class NextLaunchComponent : IComponent
 
 [Game, Unique]
 public class PredictBubbleComponent : IComponent
-{
-    
-}
-
-[Game, Unique]
-public class ReloadComponent : IComponent
 {
     
 }

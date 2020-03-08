@@ -28,14 +28,14 @@ public class RenderPredictBubbleSystem : ReactiveSystem<GameEntity>
         {
             if (e.hasBubbleSlotPos && e.bubbleSlotPos.Value.x != -1)
             {
-                e.bubbleView.GameObject.SetActive(true);
-                e.bubbleView.Animation.Play("BubbleInitAnim");
-                e.bubbleView.Image.color = new Color(1, 1, 1, 0.5f);
-                e.bubbleView.TrailEffect.SetActive(false);
+                e.bubbleView.Value.gameObject.SetActive(true);
+                e.bubbleView.Value.Animation.Play("BubbleInitAnim");
+                e.bubbleView.Value.Image.color = new Color(1, 1, 1, 0.5f);
+                e.bubbleView.Value.TrailEffect.SetActive(false);
             }
             else
             {
-                e.bubbleView.GameObject.SetActive(false);
+                e.bubbleView.Value.gameObject.SetActive(false);
             }
         }
         

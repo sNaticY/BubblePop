@@ -25,18 +25,7 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
     {
         foreach (GameEntity e in entities)
         {
-            if (e.isWaitingForLaunch)
-            {
-                e.bubbleView.GameObject.transform.position = _launchPoint.transform.position;
-            }
-            else if (e.isNextLaunch)
-            {
-                e.bubbleView.GameObject.transform.position = _nextLaunchPoint.transform.position;
-            }
-            else
-            {
-                e.bubbleView.RectTransform.anchoredPosition = e.position.Value;
-            }
+            e.bubbleView.Value.RectTransform.anchoredPosition = e.position.Value;
         }
     }
 }

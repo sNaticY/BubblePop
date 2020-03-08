@@ -1,5 +1,4 @@
 using Entitas;
-using Settings;
 using UnityEngine;
 
 public class LoadSettingsSystem : IInitializeSystem
@@ -14,8 +13,7 @@ public class LoadSettingsSystem : IInitializeSystem
     public void Initialize()
     {
         var gameSettings = Resources.Load<GameSettings>("GameSettings");
-        _gameContext.ReplaceSettings(gameSettings.BubbleSize, gameSettings.BubbleLineSpace,
-            gameSettings.BubbleSettings.Count, gameSettings.BubbleSpeed);
+        _gameContext.ReplaceSettings(gameSettings);
         for (var i = 0; i < gameSettings.BubbleSettings.Count; i++)
         {
             var settings = gameSettings.BubbleSettings[i];

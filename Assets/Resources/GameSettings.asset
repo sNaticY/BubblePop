@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BubbleSize: 150
   BubbleLineSpace: 130
-  BubbleSpeed: 1600
+  BubblePrepareLaunchSpeed: 500
+  BubbleFlySpeed: 1500
+  BubbleMergeSpeed: 1800
   BubbleSettings:
   - {fileID: 11400000, guid: 1ec209c6c82d74d37b18e715bf26bfc5, type: 2}
   - {fileID: 11400000, guid: 3c8048dc42c484b909f3452d9966eef5, type: 2}
@@ -26,3 +28,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9ef485d175cf4a3793ae8994a6821c2, type: 2}
   - {fileID: 11400000, guid: 20d18296c1f5647859647192395e8362, type: 2}
   - {fileID: 11400000, guid: a8aba5773f04a4fcca94f1d5290d711a, type: 2}
+  - {fileID: 11400000, guid: bb2e44007ebe8433e95a85e892106816, type: 2}

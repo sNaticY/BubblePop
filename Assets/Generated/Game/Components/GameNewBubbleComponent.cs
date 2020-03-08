@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 public partial class GameContext {
 
-    public GameEntity reloadEntity { get { return GetGroup(GameMatcher.Reload).GetSingleEntity(); } }
+    public GameEntity newBubbleEntity { get { return GetGroup(GameMatcher.NewBubble).GetSingleEntity(); } }
 
-    public bool isReload {
-        get { return reloadEntity != null; }
+    public bool isNewBubble {
+        get { return newBubbleEntity != null; }
         set {
-            var entity = reloadEntity;
+            var entity = newBubbleEntity;
             if (value != (entity != null)) {
                 if (value) {
-                    CreateEntity().isReload = true;
+                    CreateEntity().isNewBubble = true;
                 } else {
                     entity.Destroy();
                 }
@@ -35,18 +35,18 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ReloadComponent reloadComponent = new ReloadComponent();
+    static readonly NewBubbleComponent newBubbleComponent = new NewBubbleComponent();
 
-    public bool isReload {
-        get { return HasComponent(GameComponentsLookup.Reload); }
+    public bool isNewBubble {
+        get { return HasComponent(GameComponentsLookup.NewBubble); }
         set {
-            if (value != isReload) {
-                var index = GameComponentsLookup.Reload;
+            if (value != isNewBubble) {
+                var index = GameComponentsLookup.NewBubble;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : reloadComponent;
+                            : newBubbleComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -67,17 +67,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherReload;
+    static Entitas.IMatcher<GameEntity> _matcherNewBubble;
 
-    public static Entitas.IMatcher<GameEntity> Reload {
+    public static Entitas.IMatcher<GameEntity> NewBubble {
         get {
-            if (_matcherReload == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Reload);
+            if (_matcherNewBubble == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.NewBubble);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherReload = matcher;
+                _matcherNewBubble = matcher;
             }
 
-            return _matcherReload;
+            return _matcherNewBubble;
         }
     }
 }

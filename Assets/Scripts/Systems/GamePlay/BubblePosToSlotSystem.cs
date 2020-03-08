@@ -25,8 +25,8 @@ public class BubblePosToSlotSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            var posX = _gameContext.settings.BubbleSize / 2 * entity.bubbleSlotPos.Value.x;
-            var posY = - _gameContext.settings.BubbleLineSpace * entity.bubbleSlotPos.Value.y;
+            var posX = _gameContext.settings.Value.BubbleSize / 2 * entity.bubbleSlotPos.Value.x;
+            var posY = - _gameContext.settings.Value.BubbleLineSpace * entity.bubbleSlotPos.Value.y;
             entity.ReplacePosition(new Vector2(posX, posY));
         }
         

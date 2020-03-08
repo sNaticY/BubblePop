@@ -5,10 +5,7 @@ using UnityEngine;
 [Game, Unique]
 public class SettingsComponent : IComponent
 {
-    public float BubbleSize;
-    public float BubbleLineSpace;
-    public int BubbleTotalCount;
-    public float BubbleSpeed;
+    public GameSettings Value;
 }
 
 [Game]

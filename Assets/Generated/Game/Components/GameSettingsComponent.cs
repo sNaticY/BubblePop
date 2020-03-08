@@ -12,22 +12,22 @@ public partial class GameContext {
     public SettingsComponent settings { get { return settingsEntity.settings; } }
     public bool hasSettings { get { return settingsEntity != null; } }
 
-    public GameEntity SetSettings(float newBubbleSize, float newBubbleLineSpace, int newBubbleTotalCount, float newBubbleSpeed) {
+    public GameEntity SetSettings(GameSettings newValue) {
         if (hasSettings) {
             throw new Entitas.EntitasException("Could not set Settings!\n" + this + " already has an entity with SettingsComponent!",
                 "You should check if the context already has a settingsEntity before setting it or use context.ReplaceSettings().");
         }
         var entity = CreateEntity();
-        entity.AddSettings(newBubbleSize, newBubbleLineSpace, newBubbleTotalCount, newBubbleSpeed);
+        entity.AddSettings(newValue);
         return entity;
     }
 
-    public void ReplaceSettings(float newBubbleSize, float newBubbleLineSpace, int newBubbleTotalCount, float newBubbleSpeed) {
+    public void ReplaceSettings(GameSettings newValue) {
         var entity = settingsEntity;
         if (entity == null) {
-            entity = SetSettings(newBubbleSize, newBubbleLineSpace, newBubbleTotalCount, newBubbleSpeed);
+            entity = SetSettings(newValue);
         } else {
-            entity.ReplaceSettings(newBubbleSize, newBubbleLineSpace, newBubbleTotalCount, newBubbleSpeed);
+            entity.ReplaceSettings(newValue);
         }
     }
 
@@ -49,23 +49,17 @@ public partial class GameEntity {
     public SettingsComponent settings { get { return (SettingsComponent)GetComponent(GameComponentsLookup.Settings); } }
     public bool hasSettings { get { return HasComponent(GameComponentsLookup.Settings); } }
 
-    public void AddSettings(float newBubbleSize, float newBubbleLineSpace, int newBubbleTotalCount, float newBubbleSpeed) {
+    public void AddSettings(GameSettings newValue) {
         var index = GameComponentsLookup.Settings;
         var component = (SettingsComponent)CreateComponent(index, typeof(SettingsComponent));
-        component.BubbleSize = newBubbleSize;
-        component.BubbleLineSpace = newBubbleLineSpace;
-        component.BubbleTotalCount = newBubbleTotalCount;
-        component.BubbleSpeed = newBubbleSpeed;
+        component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceSettings(float newBubbleSize, float newBubbleLineSpace, int newBubbleTotalCount, float newBubbleSpeed) {
+    public void ReplaceSettings(GameSettings newValue) {
         var index = GameComponentsLookup.Settings;
         var component = (SettingsComponent)CreateComponent(index, typeof(SettingsComponent));
-        component.BubbleSize = newBubbleSize;
-        component.BubbleLineSpace = newBubbleLineSpace;
-        component.BubbleTotalCount = newBubbleTotalCount;
-        component.BubbleSpeed = newBubbleSpeed;
+        component.Value = newValue;
         ReplaceComponent(index, component);
     }
 

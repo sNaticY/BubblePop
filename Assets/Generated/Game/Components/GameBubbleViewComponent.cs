@@ -11,29 +11,17 @@ public partial class GameEntity {
     public BubbleViewComponent bubbleView { get { return (BubbleViewComponent)GetComponent(GameComponentsLookup.BubbleView); } }
     public bool hasBubbleView { get { return HasComponent(GameComponentsLookup.BubbleView); } }
 
-    public void AddBubbleView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider, UnityEngine.GameObject newTrailEffect, UnityEngine.Animation newAnimation) {
+    public void AddBubbleView(BubbleController newValue) {
         var index = GameComponentsLookup.BubbleView;
         var component = (BubbleViewComponent)CreateComponent(index, typeof(BubbleViewComponent));
-        component.GameObject = newGameObject;
-        component.RectTransform = newRectTransform;
-        component.Image = newImage;
-        component.Text = newText;
-        component.Collider = newCollider;
-        component.TrailEffect = newTrailEffect;
-        component.Animation = newAnimation;
+        component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceBubbleView(UnityEngine.GameObject newGameObject, UnityEngine.RectTransform newRectTransform, UnityEngine.UI.Image newImage, UnityEngine.UI.Text newText, UnityEngine.Collider2D newCollider, UnityEngine.GameObject newTrailEffect, UnityEngine.Animation newAnimation) {
+    public void ReplaceBubbleView(BubbleController newValue) {
         var index = GameComponentsLookup.BubbleView;
         var component = (BubbleViewComponent)CreateComponent(index, typeof(BubbleViewComponent));
-        component.GameObject = newGameObject;
-        component.RectTransform = newRectTransform;
-        component.Image = newImage;
-        component.Text = newText;
-        component.Collider = newCollider;
-        component.TrailEffect = newTrailEffect;
-        component.Animation = newAnimation;
+        component.Value = newValue;
         ReplaceComponent(index, component);
     }
 

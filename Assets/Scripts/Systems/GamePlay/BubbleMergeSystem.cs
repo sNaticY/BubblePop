@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
@@ -24,14 +23,15 @@ public class BubbleMergeSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entites)
     {
-        Debug.Log(entites.Count);
         var mergeables = _gameContext.GetEntitiesWithReadyToMerge(_gameContext.currentMergeNumber.Value);
         foreach (var e in mergeables)
         {
             if (e.bubbleNumber.Value == _gameContext.currentMergeNumber.Value)
             {
+                Debug.Log($"Bubble {e.bubbleNumber.Value} in {e.bubbleSlotPos.Value} merge to target {e.readyToMerge.TargetSlot} for {e.readyToMerge.TargetNumber}");
                 var targetEntity = _gameContext.GetEntityWithBubbleSlotPos(e.readyToMerge.TargetSlot);
                 e.ReplaceBubbleTargetPos(targetEntity.position.Value);
+                e.ReplaceSpeed(_gameContext.settings.Value.BubbleMergeSpeed);
             }
         }
     }

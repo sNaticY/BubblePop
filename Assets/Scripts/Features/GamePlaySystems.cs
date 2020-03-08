@@ -1,18 +1,15 @@
 public class GamePlaySystems : Feature
 {
-    public GamePlaySystems(Contexts contexts) : base("Movement Systems")
+    public GamePlaySystems(Contexts contexts) : base("GamePlay Systems")
     {
-        Add(new LoadSettingsSystem(contexts));
-        
-        Add(new CreateBubblesSystem(contexts));
-        Add(new BubblePosToSlotSystem(contexts));
-        Add(new PrepareLaunchSystem(contexts));
         Add(new PredictBubbleSystem(contexts));
+        
+        Add(new BubblePosToSlotSystem(contexts));
         Add(new BubbleMoveToSlotSystem(contexts));
         Add(new BubbleMoveToPosSystem(contexts));
-        Add(new BubbleCheckMergeSystem(contexts));
-        Add(new BubbleMergeSystem(contexts));
-        Add(new BubbleCompleteMoveSystem(contexts));
+        
+        Add(new CreateBubbleInSlotSystem(contexts));
+        Add(new DestroyBubbleSystem(contexts));
 
     }
 }

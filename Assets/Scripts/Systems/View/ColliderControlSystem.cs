@@ -24,7 +24,7 @@ public class ColliderControlSystem : ReactiveSystem<GameEntity>
     {
         foreach (GameEntity e in entities)
         {
-            e.bubbleView.Collider.enabled = true;
+            e.bubbleView.Value.Collider.enabled = true;
         }
     }
 }

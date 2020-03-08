@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ReadyToFire readyToFireComponent = new ReadyToFire();
+    static readonly ActiveBubbleComponent activeBubbleComponent = new ActiveBubbleComponent();
 
-    public bool isReadyToFire {
-        get { return HasComponent(GameComponentsLookup.ReadyToFire); }
+    public bool isActiveBubble {
+        get { return HasComponent(GameComponentsLookup.ActiveBubble); }
         set {
-            if (value != isReadyToFire) {
-                var index = GameComponentsLookup.ReadyToFire;
+            if (value != isActiveBubble) {
+                var index = GameComponentsLookup.ActiveBubble;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : readyToFireComponent;
+                            : activeBubbleComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherReadyToFire;
+    static Entitas.IMatcher<GameEntity> _matcherActiveBubble;
 
-    public static Entitas.IMatcher<GameEntity> ReadyToFire {
+    public static Entitas.IMatcher<GameEntity> ActiveBubble {
         get {
-            if (_matcherReadyToFire == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ReadyToFire);
+            if (_matcherActiveBubble == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ActiveBubble);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherReadyToFire = matcher;
+                _matcherActiveBubble = matcher;
             }
 
-            return _matcherReadyToFire;
+            return _matcherActiveBubble;
         }
     }
 }

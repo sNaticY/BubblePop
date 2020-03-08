@@ -25,7 +25,8 @@ public class RenderBubbleSpriteSystem : ReactiveSystem<GameEntity>
         foreach (GameEntity e in entities)
         {
             var setting = _gameContext.GetEntityWithBubbleSetting(e.bubbleNumber.Value);
-            e.bubbleView.Image.sprite = setting.bubbleSetting.Sprite;
+            if (setting != null)
+                e.bubbleView.Value.Image.sprite = setting.bubbleSetting.Sprite;
         }
     }
 }

@@ -22,7 +22,7 @@ public class BubbleMoveToPosSystem : IExecuteSystem, ICleanupSystem
             {
                 Vector2 dir = e.bubbleTargetPos.Value - e.position.Value;
                 Vector2 newPosition = e.position.Value +
-                                      dir.normalized * (_gameContext.settings.BubbleSpeed * Time.deltaTime);
+                                      dir.normalized * (e.speed.Value * Time.deltaTime);
                 e.ReplacePosition(newPosition);
 
                 var distance = dir.magnitude;
@@ -39,7 +39,7 @@ public class BubbleMoveToPosSystem : IExecuteSystem, ICleanupSystem
             {
                 var dir = e.bubbleSecondTargetPos.Value - e.position.Value;
                 Vector2 newPosition = e.position.Value +
-                                      dir.normalized * (_gameContext.settings.BubbleSpeed * Time.deltaTime);
+                                      dir.normalized * (e.speed.Value * Time.deltaTime);
                 e.ReplacePosition(newPosition);
 
                 var distance = dir.magnitude;
