@@ -23,7 +23,6 @@ public partial class GameContext {
     }
 
     public void ReplaceGameState(GameState newValue) {
-        
         var entity = gameStateEntity;
         if (entity == null) {
             entity = SetGameState(newValue);

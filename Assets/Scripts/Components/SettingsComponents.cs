@@ -11,6 +11,7 @@ public class SettingsComponent : IComponent
 [Game]
 public class BubbleSettingComponent : IComponent
 {
+    public Color Color;
     public Sprite Sprite;
     [PrimaryEntityIndex] 
     public int Number;

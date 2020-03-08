@@ -13,5 +13,6 @@ public class ViewSystems : Feature
         Add(new RenderLineViewSystem(contexts));
         Add(new RenderDropDownSystem(contexts));
         Add(new PlayAnimationSystem(contexts));
+        Add(new RenderParticleSystem(contexts));
     }
 }
