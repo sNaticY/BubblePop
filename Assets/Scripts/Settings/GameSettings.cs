@@ -18,6 +18,8 @@ public class GameSettings : ScriptableObject
 
     private static readonly int[] BubbleNumbers = new int[] {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
 
+    public List<int> Progression;
+
     public static int GetRandomBubbleNumber(int minIndex, int maxIndex)
     {
         var index = Random.Range(minIndex, maxIndex + 1);

@@ -36,7 +36,7 @@ public class BubbleScrollSystem : ReactiveSystem<GameEntity>
                     {
                         ScrollUp();
                     }
-                    else if (entity.bubbleSlotPos.Value.y > 0 && entity.bubbleSlotPos.Value.y <= 5)
+                    else if (entity.bubbleSlotPos.Value.y > 0 && entity.bubbleSlotPos.Value.y < 5)
                     {
                         ScrollDown();
                     }

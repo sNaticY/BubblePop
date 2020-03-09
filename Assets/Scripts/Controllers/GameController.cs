@@ -2,6 +2,7 @@ using System;
 using Entitas;
 using Features;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum AudioType
 {
@@ -48,6 +49,9 @@ public class GameController : MonoBehaviour
     private static FlyingFeature _flyingFeature;
     private static MergeFeature _mergeFeature;
     private static ScrollFeature _scrollFeature;
+
+    [SerializeField] private Button _pauseButton = null;
+    [SerializeField] private GameObject _mainMenu = null;
     
     private void Start()
     {
@@ -61,8 +65,15 @@ public class GameController : MonoBehaviour
         _flyingFeature = new FlyingFeature(_contexts);
         _mergeFeature = new MergeFeature(_contexts);
         _scrollFeature = new ScrollFeature(_contexts);
+        
+        _pauseButton.onClick.AddListener(OnPauseButtonClicked);
     }
-    
+
+    private void OnPauseButtonClicked()
+    {
+        _mainMenu.SetActive(true);
+    }
+
     public void Initialize()
     {
         if (!_initialized)
@@ -131,5 +142,10 @@ public class GameController : MonoBehaviour
             .Add(new InputSystems(contexts))
             .Add(new GamePlaySystems(contexts))
             .Add(new ViewSystems(contexts));
+    }
+
+    private void OnDestroy()
+    {
+        _pauseButton.onClick.RemoveAllListeners();
     }
 }

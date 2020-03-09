@@ -11,5 +11,7 @@ public class GamePlaySystems : Feature
         Add(new CreateBubbleInSlotSystem(contexts));
         Add(new DestroyBubbleSystem(contexts));
 
+        Add(new ProgressionSystem(contexts));
+
     }
 }

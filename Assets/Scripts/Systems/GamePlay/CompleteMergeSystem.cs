@@ -23,20 +23,20 @@ public class CompleteMergeSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        Debug.Log("Call Merge --------- ");
+        // Debug.Log("Call Merge --------- ");
         while (true)
         {
-            Debug.Log("Cur Merge Number = " + _gameContext.currentMergeNumber.Value);
+            // Debug.Log("Cur Merge Number = " + _gameContext.currentMergeNumber.Value);
             if (_gameContext.currentMergeNumber.Value >= 2048)
             {
                 _gameContext.ReplaceGameState(GameState.Scroll);
                 return;
             }
             var readyToMerge = _gameContext.GetEntitiesWithReadyToMerge(_gameContext.currentMergeNumber.Value).Count;
-            Debug.Log("Ready to Merge Number = " + readyToMerge);
+            // Debug.Log("Ready to Merge Number = " + readyToMerge);
             if (readyToMerge == 0)
             {
-                Debug.Log("Replace current Merge Number = " + _gameContext.currentMergeNumber.Value * 2);
+                // Debug.Log("Replace current Merge Number = " + _gameContext.currentMergeNumber.Value * 2);
                 _gameContext.ReplaceCurrentMergeNumber(_gameContext.currentMergeNumber.Value * 2);
             }
             else

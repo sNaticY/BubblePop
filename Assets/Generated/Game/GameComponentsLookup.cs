@@ -32,14 +32,17 @@ public static class GameComponentsLookup {
     public const int PlayAudio = 21;
     public const int Position = 22;
     public const int PredictBubble = 23;
-    public const int ReadyToDestroy = 24;
-    public const int ReadyToDropDown = 25;
-    public const int ReadyToMerge = 26;
-    public const int Settings = 27;
-    public const int Speed = 28;
-    public const int WaitingForLaunch = 29;
+    public const int Progression = 24;
+    public const int ProgressionView = 25;
+    public const int ReadyToDestroy = 26;
+    public const int ReadyToDropDown = 27;
+    public const int ReadyToMerge = 28;
+    public const int Score = 29;
+    public const int Settings = 30;
+    public const int Speed = 31;
+    public const int WaitingForLaunch = 32;
 
-    public const int TotalComponents = 30;
+    public const int TotalComponents = 33;
 
     public static readonly string[] componentNames = {
         "ActiveBubble",
@@ -66,9 +69,12 @@ public static class GameComponentsLookup {
         "PlayAudio",
         "Position",
         "PredictBubble",
+        "Progression",
+        "ProgressionView",
         "ReadyToDestroy",
         "ReadyToDropDown",
         "ReadyToMerge",
+        "Score",
         "Settings",
         "Speed",
         "WaitingForLaunch"
@@ -99,9 +105,12 @@ public static class GameComponentsLookup {
         typeof(PlayAudioComponent),
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
+        typeof(ProgressionComponent),
+        typeof(ProgressionViewComponent),
         typeof(ReadyToDestroy),
         typeof(ReadyToDropDown),
         typeof(ReadyToMerge),
+        typeof(ScoreComponent),
         typeof(SettingsComponent),
         typeof(SpeedComponent),
         typeof(WaitingForLaunchComponent)

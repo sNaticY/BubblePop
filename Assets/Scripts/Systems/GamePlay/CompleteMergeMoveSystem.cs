@@ -28,7 +28,11 @@ public class CompleteMergeMoveSystem : ReactiveSystem<GameEntity>
         {
             e.isCompleteMove = false;
             var targetEntity = _gameContext.GetEntityWithBubbleSlotPos(e.readyToMerge.TargetSlot);
-            targetEntity?.ReplaceBubbleNumber(e.readyToMerge.TargetNumber);
+            if (targetEntity != null && targetEntity.bubbleNumber.Value != e.readyToMerge.TargetNumber)
+            {
+                targetEntity.ReplaceBubbleNumber(e.readyToMerge.TargetNumber);
+                _gameContext.CreateEntity().ReplaceScore(e.readyToMerge.TargetNumber);
+            }
             _gameContext.ReplaceGameState(GameState.Merge);
             
             _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Bubble);

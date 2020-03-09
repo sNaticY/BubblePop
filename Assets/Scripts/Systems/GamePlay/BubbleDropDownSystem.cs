@@ -33,7 +33,7 @@ public class BubbleDropDownSystem : ReactiveSystem<GameEntity>
         var allBubbles = _gameContext.GetEntities(GameMatcher.InSlotBubble);
         foreach (var entity in allBubbles)
         {
-            if (!entity.isConnectToCeil)
+            if (!entity.isConnectToCeil && entity.isActiveBubble)
             {
                 entity.isReadyToDropDown = true;
                 entity.isActiveBubble = false;

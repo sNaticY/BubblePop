@@ -28,7 +28,6 @@ public class BubbleMergeSystem : ReactiveSystem<GameEntity>
         {
             if (e.bubbleNumber.Value == _gameContext.currentMergeNumber.Value)
             {
-                Debug.Log($"Bubble {e.bubbleNumber.Value} in {e.bubbleSlotPos.Value} merge to target {e.readyToMerge.TargetSlot} for {e.readyToMerge.TargetNumber}");
                 var targetEntity = _gameContext.GetEntityWithBubbleSlotPos(e.readyToMerge.TargetSlot);
                 e.isInSlotBubble = false;
                 e.ReplaceBubbleTargetPos(targetEntity.position.Value);
