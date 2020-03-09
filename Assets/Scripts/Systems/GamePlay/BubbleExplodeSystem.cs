@@ -25,6 +25,8 @@ public class BubbleExplodeSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
+        _gameContext.ReplaceGameState(GameState.Merge);
+        
         foreach (var entity in entities)
         {
             var e30 = _gameContext.GetEntityWithBubbleSlotPos(
@@ -44,10 +46,8 @@ public class BubbleExplodeSystem : ReactiveSystem<GameEntity>
             if (e210 != null) SetBubbleReadyToDestroy(e210);
             if (e270 != null) SetBubbleReadyToDestroy(e270);
             if (e330 != null) SetBubbleReadyToDestroy(e330);
-            entity.isReadyToDestroy = true;
+            SetBubbleReadyToDestroy(entity);
         }
-        
-        _gameContext.ReplaceGameState(GameState.Merge);
     }
 
     private void SetBubbleReadyToDestroy(GameEntity entity)

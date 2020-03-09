@@ -25,7 +25,7 @@ public class BubbleDropDownSystem : ReactiveSystem<GameEntity>
     {
         for (int i = 0; i < 12; i++)
         {
-            var entity = _gameContext.GetEntityWithBubbleSlotPos(new Vector2Int(i, 0));
+            var entity = _gameContext.GetEntityWithBubbleSlotPos(new Vector2Int(i, -1));
             if(entity != null)
                 CheckConnect(entity);
         }

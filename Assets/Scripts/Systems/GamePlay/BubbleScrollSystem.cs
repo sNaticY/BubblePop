@@ -25,7 +25,7 @@ public class BubbleScrollSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        for (int i = 7; i >= 0; i--)
+        for (int i = 7; i >= -1; i--)
         {
             for (int j = 0; j < 12; j++)
             {
@@ -36,9 +36,14 @@ public class BubbleScrollSystem : ReactiveSystem<GameEntity>
                     {
                         ScrollUp();
                     }
-                    else if (entity.bubbleSlotPos.Value.y <= 5)
+                    else if (entity.bubbleSlotPos.Value.y > 0 && entity.bubbleSlotPos.Value.y <= 5)
                     {
                         ScrollDown();
+                    }
+                    else if (entity.bubbleSlotPos.Value.y <= 0)
+                    {
+                        ScrollDown();
+                        _gameContext.ReplaceGameState(GameState.Scroll);
                     }
 
                     _gameContext.ReplaceGameState(GameState.Reload);

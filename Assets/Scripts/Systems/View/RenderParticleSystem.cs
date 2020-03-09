@@ -9,6 +9,7 @@ public class RenderParticleSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _gameContext;
     private readonly GameObject _explodePrefab = Resources.Load<GameObject>("BubbleExplodePrefab");
+    private readonly Animation _2kAnimation = GameObject.Find("Image_2K").GetComponent<Animation>();
     
     public RenderParticleSystem(Contexts contexts) : base(contexts.game)
     {
@@ -33,9 +34,19 @@ public class RenderParticleSystem : ReactiveSystem<GameEntity>
             var particleGameObject = GameObject.Instantiate(_explodePrefab, position, Quaternion.identity, entity.bubbleView.Value.transform.parent);
             var particleSystem = particleGameObject.GetComponent<ParticleSystem>();
             var mainParticle = particleSystem.main;
-            var color = _gameContext.GetEntityWithBubbleSetting(entity.bubbleNumber.Value).bubbleSetting.Color;
-            mainParticle.startColor = color.linear;
-            GameObject.Destroy(particleGameObject, 2f);
+            var bubbleSettings = _gameContext.GetEntityWithBubbleSetting(entity.bubbleNumber.Value);
+            if (bubbleSettings != null)
+            {
+                var color = bubbleSettings.bubbleSetting.Color;
+                mainParticle.startColor = color.linear;
+                GameObject.Destroy(particleGameObject, 2f);
+            }
+
+            if (entity.bubbleNumber.Value >= 2048)
+            {
+                _2kAnimation.gameObject.transform.position = position;
+                _2kAnimation.Play("2KAnim");
+            }
             
         }
     }

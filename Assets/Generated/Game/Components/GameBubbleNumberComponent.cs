@@ -6,6 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using UnityEngine;
+
 public partial class GameEntity {
 
     public BubbleNumberComponent bubbleNumber { get { return (BubbleNumberComponent)GetComponent(GameComponentsLookup.BubbleNumber); } }
@@ -19,6 +22,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceBubbleNumber(int newValue) {
+        Debug.Log("ReplaceBubbleNumer to " + newValue);
         var index = GameComponentsLookup.BubbleNumber;
         var component = (BubbleNumberComponent)CreateComponent(index, typeof(BubbleNumberComponent));
         component.Value = newValue;

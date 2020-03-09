@@ -41,6 +41,7 @@ public class RayCastSystem : ReactiveSystem<InputEntity>
             if(hit.transform.CompareTag("Ball"))
             {
                 var e = (GameEntity) hit.transform.gameObject.GetEntityLink().entity;
+                if (!e.hasBubbleSlotPos) return;
                 var angle = Vector2.SignedAngle(Vector2.up, hit.point - (Vector2) hit.transform.position);
                 _inputContext.ReplaceRayCollision(e.bubbleSlotPos.Value, null, hit.point, angle);
                 return;
