@@ -39,6 +39,8 @@ public class FireBubbleSystem : ReactiveSystem<InputEntity>
             bubbleEntity.ReplaceSpeed(_gameContext.settings.Value.BubbleFlySpeed);
             bubbleEntity.bubbleView.Value.TrailEffect.SetActive(true);
             bubbleEntity.isWaitingForLaunch = false;
+            
+            _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Transition);
         }
 
         _inputContext.ReplaceRayCollision(new Vector2Int(-1, -1), null, Vector2.zero, 0);

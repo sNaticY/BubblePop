@@ -48,6 +48,8 @@ public class BubbleExplodeSystem : ReactiveSystem<GameEntity>
             if (e330 != null) SetBubbleReadyToDestroy(e330);
             SetBubbleReadyToDestroy(entity);
         }
+        
+        _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Explode2K);
     }
 
     private void SetBubbleReadyToDestroy(GameEntity entity)

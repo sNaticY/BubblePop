@@ -10,38 +10,41 @@ public static class GameComponentsLookup {
 
     public const int ActiveBubble = 0;
     public const int Animation = 1;
-    public const int BubbleCreation = 2;
-    public const int BubbleNumber = 3;
-    public const int BubbleScrollToSlot = 4;
-    public const int BubbleSecondTargetPos = 5;
-    public const int BubbleSetting = 6;
-    public const int BubbleSlotPos = 7;
-    public const int BubbleTargetPos = 8;
-    public const int BubbleTargetSlot = 9;
-    public const int BubbleView = 10;
-    public const int CompleteMove = 11;
-    public const int ConnectToCeil = 12;
-    public const int CurrentMergeNumber = 13;
-    public const int GameState = 14;
-    public const int InSlotBubble = 15;
-    public const int LineView = 16;
-    public const int MergeableCheck = 17;
-    public const int NewBubble = 18;
-    public const int NextLaunch = 19;
-    public const int Position = 20;
-    public const int PredictBubble = 21;
-    public const int ReadyToDestroy = 22;
-    public const int ReadyToDropDown = 23;
-    public const int ReadyToMerge = 24;
-    public const int Settings = 25;
-    public const int Speed = 26;
-    public const int WaitingForLaunch = 27;
+    public const int AudioSource = 2;
+    public const int BubbleCreation = 3;
+    public const int BubbleNumber = 4;
+    public const int BubbleScrollToSlot = 5;
+    public const int BubbleSecondTargetPos = 6;
+    public const int BubbleSetting = 7;
+    public const int BubbleSlotPos = 8;
+    public const int BubbleTargetPos = 9;
+    public const int BubbleTargetSlot = 10;
+    public const int BubbleView = 11;
+    public const int CompleteMove = 12;
+    public const int ConnectToCeil = 13;
+    public const int CurrentMergeNumber = 14;
+    public const int GameState = 15;
+    public const int InSlotBubble = 16;
+    public const int LineView = 17;
+    public const int MergeableCheck = 18;
+    public const int NewBubble = 19;
+    public const int NextLaunch = 20;
+    public const int PlayAudio = 21;
+    public const int Position = 22;
+    public const int PredictBubble = 23;
+    public const int ReadyToDestroy = 24;
+    public const int ReadyToDropDown = 25;
+    public const int ReadyToMerge = 26;
+    public const int Settings = 27;
+    public const int Speed = 28;
+    public const int WaitingForLaunch = 29;
 
-    public const int TotalComponents = 28;
+    public const int TotalComponents = 30;
 
     public static readonly string[] componentNames = {
         "ActiveBubble",
         "Animation",
+        "AudioSource",
         "BubbleCreation",
         "BubbleNumber",
         "BubbleScrollToSlot",
@@ -60,6 +63,7 @@ public static class GameComponentsLookup {
         "MergeableCheck",
         "NewBubble",
         "NextLaunch",
+        "PlayAudio",
         "Position",
         "PredictBubble",
         "ReadyToDestroy",
@@ -73,6 +77,7 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(ActiveBubbleComponent),
         typeof(AnimationComponent),
+        typeof(AudioSourceComponent),
         typeof(BubbleCreationComponent),
         typeof(BubbleNumberComponent),
         typeof(BubbleScrollToSlotComponent),
@@ -91,6 +96,7 @@ public static class GameComponentsLookup {
         typeof(MergeableCheck),
         typeof(NewBubbleComponent),
         typeof(NextLaunchComponent),
+        typeof(PlayAudioComponent),
         typeof(PositionComponent),
         typeof(PredictBubbleComponent),
         typeof(ReadyToDestroy),

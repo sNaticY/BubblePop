@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public BubbleNumberComponent bubbleNumber { get { return (BubbleNumberComponent)GetComponent(GameComponentsLookup.BubbleNumber); } }
-    public bool hasBubbleNumber { get { return HasComponent(GameComponentsLookup.BubbleNumber); } }
+    public PlayAudioComponent playAudio { get { return (PlayAudioComponent)GetComponent(GameComponentsLookup.PlayAudio); } }
+    public bool hasPlayAudio { get { return HasComponent(GameComponentsLookup.PlayAudio); } }
 
-    public void AddBubbleNumber(int newValue) {
-        var index = GameComponentsLookup.BubbleNumber;
-        var component = (BubbleNumberComponent)CreateComponent(index, typeof(BubbleNumberComponent));
+    public void AddPlayAudio(AudioType newValue) {
+        var index = GameComponentsLookup.PlayAudio;
+        var component = (PlayAudioComponent)CreateComponent(index, typeof(PlayAudioComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceBubbleNumber(int newValue) {
-        var index = GameComponentsLookup.BubbleNumber;
-        var component = (BubbleNumberComponent)CreateComponent(index, typeof(BubbleNumberComponent));
+    public void ReplacePlayAudio(AudioType newValue) {
+        var index = GameComponentsLookup.PlayAudio;
+        var component = (PlayAudioComponent)CreateComponent(index, typeof(PlayAudioComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveBubbleNumber() {
-        RemoveComponent(GameComponentsLookup.BubbleNumber);
+    public void RemovePlayAudio() {
+        RemoveComponent(GameComponentsLookup.PlayAudio);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherBubbleNumber;
+    static Entitas.IMatcher<GameEntity> _matcherPlayAudio;
 
-    public static Entitas.IMatcher<GameEntity> BubbleNumber {
+    public static Entitas.IMatcher<GameEntity> PlayAudio {
         get {
-            if (_matcherBubbleNumber == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.BubbleNumber);
+            if (_matcherPlayAudio == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.PlayAudio);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherBubbleNumber = matcher;
+                _matcherPlayAudio = matcher;
             }
 
-            return _matcherBubbleNumber;
+            return _matcherPlayAudio;
         }
     }
 }

@@ -49,7 +49,7 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
             e.isMergeableCheck = false;
         }
         
-        var resultNumber = numberToMerge * (int) Mathf.Pow(2, sameBubbles.Count - 1);
+        var resultNumber = Math.Min(numberToMerge * (uint) Mathf.Pow(2, sameBubbles.Count - 1), 2048);
         
         
         // If more than 1 bubble to merge
@@ -64,7 +64,7 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
             foreach (var bubble in sameBubbles)
             {
                 Dictionary<GameEntity, ReadyToMerge> subReadyToMerges = new Dictionary<GameEntity, ReadyToMerge>();
-                var r = CalcMergeValue(bubble, resultNumber, resultNumber, subReadyToMerges);
+                var r = CalcMergeValue(bubble, (int)resultNumber, (int)resultNumber, subReadyToMerges);
                 
                 // take the higher one as merge core if result equals
                 if (r == maxResultNumber)
@@ -88,7 +88,7 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
             foreach (var bubble in sameBubbles)
             {
                 if(bubble != mergeCore)
-                    readyToMerges.Add(bubble, new ReadyToMerge(){Number = fakeSelfNumber, TargetNumber = resultNumber, TargetSlot = mergeCore.bubbleSlotPos.Value});
+                    readyToMerges.Add(bubble, new ReadyToMerge(){Number = fakeSelfNumber, TargetNumber = (int)resultNumber, TargetSlot = mergeCore.bubbleSlotPos.Value});
             }
             
             // Add most valuable sub merges
@@ -100,10 +100,10 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
                 }
             }
 
-            resultNumber = maxResultNumber;
+            resultNumber = Math.Min(maxResultNumber, 2048);
         }
 
-        return resultNumber;
+        return (int)resultNumber;
     }
 
     private void FindMergeableBubble(GameEntity entity,int tempNumber, int number, ref List<GameEntity> mergeableEntities)

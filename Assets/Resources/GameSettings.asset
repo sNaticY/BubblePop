@@ -16,7 +16,7 @@ MonoBehaviour:
   BubbleLineSpace: 130
   BubblePrepareLaunchSpeed: 500
   BubbleFlySpeed: 2000
-  BubbleMergeSpeed: 1800
+  BubbleMergeSpeed: 1400
   BubbleSettings:
   - {fileID: 11400000, guid: 1ec209c6c82d74d37b18e715bf26bfc5, type: 2}
   - {fileID: 11400000, guid: 3c8048dc42c484b909f3452d9966eef5, type: 2}
@@ -29,3 +29,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20d18296c1f5647859647192395e8362, type: 2}
   - {fileID: 11400000, guid: a8aba5773f04a4fcca94f1d5290d711a, type: 2}
   - {fileID: 11400000, guid: bb2e44007ebe8433e95a85e892106816, type: 2}
+  TransitionAudioClips:
+  - {fileID: 8300000, guid: 68906145d363346e88c0e0a688764657, type: 3}
+  - {fileID: 8300000, guid: 0592d2e3fd7064d28b990a2fa76325c2, type: 3}
+  - {fileID: 8300000, guid: 49f843561c70a4167985abf7788422f8, type: 3}
+  BubbleAudioClips:
+  - {fileID: 8300000, guid: 1fc2e74e9f9ae4774b3445b155336601, type: 3}
+  - {fileID: 8300000, guid: eee8eb1f6722b4f6c8dad39f627cfbc9, type: 3}
+  - {fileID: 8300000, guid: 44e14e261456246a0a17388414a91020, type: 3}
+  Explode2K: {fileID: 8300000, guid: 18526d63973ce42cfb8dcf293f001539, type: 3}
+  Perfect: {fileID: 8300000, guid: 6f3ebb7832da44bc2b8b794fa443fc6d, type: 3}

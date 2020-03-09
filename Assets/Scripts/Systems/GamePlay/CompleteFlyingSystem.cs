@@ -40,6 +40,8 @@ public class CompleteFlying : ReactiveSystem<GameEntity>
             e.bubbleView.Value.TrailEffect.SetActive(false);
             e.RemoveBubbleTargetSlot();
             
+            _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Bubble);
+            
             _gameContext.ReplaceCurrentMergeNumber(e.bubbleNumber.Value);
         }
         _gameContext.ReplaceGameState(GameState.Merge);

@@ -18,7 +18,7 @@ public class InitSlotBubblesSystem : IInitializeSystem
                 var slotX = j * 2 + i % 2;
                 var slotY = i - 2;
                 var targetSlot = new Vector2Int(slotX, slotY);
-                var bubbleNumber = GameSettings.GetRandomBubbleNumber(3, 5);
+                var bubbleNumber = GameSettings.GetRandomBubbleNumber(0, 0);
                 bubbleCreation.ReplaceBubbleCreation(bubbleNumber, targetSlot);
             }
         }

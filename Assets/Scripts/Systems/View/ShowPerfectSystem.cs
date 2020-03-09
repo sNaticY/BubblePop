@@ -31,5 +31,6 @@ public class ShowPerfectSystem : ReactiveSystem<GameEntity>
             if (entity != null) return;
         }
         _perfectAnimation.Play("ShowPerfectAnim");
+        _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Perfect);
     }
 }

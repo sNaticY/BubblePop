@@ -3,6 +3,15 @@ using Entitas;
 using Features;
 using UnityEngine;
 
+public enum AudioType
+{
+    None = 0,
+    Transition = 1,
+    Bubble = 2,
+    Explode2K = 3,
+    Perfect = 4,
+}
+
 public enum GameState
 {
     Init = 0,

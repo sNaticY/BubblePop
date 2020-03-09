@@ -15,5 +15,6 @@ public class ViewSystems : Feature
         Add(new PlayAnimationSystem(contexts));
         Add(new RenderParticleSystem(contexts));
         Add(new ShowPerfectSystem(contexts));
+        Add(new PlayAudioSystem(contexts));
     }
 }

@@ -31,6 +31,8 @@ public class CompleteMergeMoveSystem : ReactiveSystem<GameEntity>
             targetEntity?.ReplaceBubbleNumber(e.readyToMerge.TargetNumber);
             _gameContext.ReplaceGameState(GameState.Merge);
             
+            _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Bubble);
+            
             e.isReadyToDestroy = true;
         }
     }
