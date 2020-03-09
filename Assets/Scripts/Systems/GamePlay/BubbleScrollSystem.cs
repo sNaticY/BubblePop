@@ -36,17 +36,15 @@ public class BubbleScrollSystem : ReactiveSystem<GameEntity>
                     {
                         ScrollUp();
                     }
-                    else if (entity.bubbleSlotPos.Value.y > 0 && entity.bubbleSlotPos.Value.y < 5)
+                    else if (entity.bubbleSlotPos.Value.y < 5)
                     {
                         ScrollDown();
                     }
-                    else if (entity.bubbleSlotPos.Value.y <= 0)
+                    else
                     {
-                        ScrollDown();
-                        _gameContext.ReplaceGameState(GameState.Scroll);
+                        _gameContext.ReplaceGameState(GameState.Reload);
                     }
 
-                    _gameContext.ReplaceGameState(GameState.Reload);
                     return;
                 }
             }
@@ -63,6 +61,7 @@ public class BubbleScrollSystem : ReactiveSystem<GameEntity>
                 var entity = _gameContext.GetEntityWithBubbleSlotPos(new Vector2Int(j, i));
                 if (entity == null) continue;
                 entity.ReplaceBubbleSlotPos(entity.bubbleSlotPos.Value - new Vector2Int(0, 1));
+                entity.ReplaceBubbleScrollToSlot(entity.bubbleSlotPos.Value);
                 entity.isActiveBubble = entity.bubbleSlotPos.Value.y >= 0;
             }
         }
@@ -77,6 +76,7 @@ public class BubbleScrollSystem : ReactiveSystem<GameEntity>
                 var entity = _gameContext.GetEntityWithBubbleSlotPos(new Vector2Int(j, i));
                 if (entity == null) continue;
                 entity.ReplaceBubbleSlotPos(entity.bubbleSlotPos.Value + new Vector2Int(0, 1));
+                entity.ReplaceBubbleScrollToSlot(entity.bubbleSlotPos.Value);
                 entity.isActiveBubble = entity.bubbleSlotPos.Value.y >= 0;
             }
         }

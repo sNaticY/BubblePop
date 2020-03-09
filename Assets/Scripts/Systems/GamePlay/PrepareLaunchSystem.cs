@@ -27,23 +27,30 @@ public class PrepareLaunchSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     protected override bool Filter(GameEntity entity)
     {
-        return _gameContext.isWaitingForLaunch == false && entity.gameState.Value == GameState.Reload;
+        return  entity.gameState.Value == GameState.Reload;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
-        var bubble = _gameContext.nextLaunchEntity;
-        bubble.isWaitingForLaunch = true;
-        bubble.isNextLaunch = false;
-        bubble.ReplaceBubbleTargetPos(_launchPoint.anchoredPosition);
-        bubble.ReplaceSpeed(_gameContext.settings.Value.BubblePrepareLaunchSpeed);
-        bubble.ReplaceAnimation(0, BubbleAnimation.ToLaunch);
-        
-        var newBubble = CreateNewBubble();
-        newBubble.isNextLaunch = true;
-        newBubble.ReplaceAnimation(0, BubbleAnimation.InitSmall);
-        
-        _gameContext.predictBubbleEntity.ReplaceBubbleNumber(bubble.bubbleNumber.Value);
+        if (_gameContext.isWaitingForLaunch == false)
+        {
+            var bubble = _gameContext.nextLaunchEntity;
+            bubble.isWaitingForLaunch = true;
+            bubble.isNextLaunch = false;
+            bubble.ReplaceBubbleTargetPos(_launchPoint.anchoredPosition);
+            bubble.ReplaceSpeed(_gameContext.settings.Value.BubblePrepareLaunchSpeed);
+            bubble.ReplaceAnimation(0, BubbleAnimation.ToLaunch);
+
+            var newBubble = CreateNewBubble();
+            newBubble.isNextLaunch = true;
+            newBubble.ReplaceAnimation(0, BubbleAnimation.InitSmall);
+
+            _gameContext.predictBubbleEntity.ReplaceBubbleNumber(bubble.bubbleNumber.Value);
+        }
+        else
+        {
+            _gameContext.ReplaceGameState(GameState.Fire);
+        }
     }
 
     private GameEntity CreateNewBubble()

@@ -6,6 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using UnityEngine;
+
 public partial class GameContext {
 
     public GameEntity gameStateEntity { get { return GetGroup(GameMatcher.GameState).GetSingleEntity(); } }
@@ -23,6 +26,7 @@ public partial class GameContext {
     }
 
     public void ReplaceGameState(GameState newValue) {
+        Debug.Log("GameState Change to " + newValue);
         var entity = gameStateEntity;
         if (entity == null) {
             entity = SetGameState(newValue);

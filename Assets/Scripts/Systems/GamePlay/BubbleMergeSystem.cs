@@ -33,6 +33,10 @@ public class BubbleMergeSystem : ReactiveSystem<GameEntity>
                 e.ReplaceBubbleTargetPos(targetEntity.position.Value);
                 e.ReplaceSpeed(_gameContext.settings.Value.BubbleMergeSpeed);
             }
+            else
+            {
+                e.isReadyToDestroy = true;
+            }
         }
     }
 }
