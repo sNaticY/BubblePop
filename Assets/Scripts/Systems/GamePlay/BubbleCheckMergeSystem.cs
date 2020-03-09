@@ -32,7 +32,8 @@ public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
         
         foreach (var merge in readyToMerges)
         {
-            merge.Key.ReplaceComponent(GameComponentsLookup.ReadyToMerge, merge.Value);
+            if(merge.Key.isInSlotBubble)
+                merge.Key.ReplaceComponent(GameComponentsLookup.ReadyToMerge, merge.Value);
         }
 
         newBubble.isNewBubble = false;

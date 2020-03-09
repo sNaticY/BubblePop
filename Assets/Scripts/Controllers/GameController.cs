@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 {
     private Contexts _contexts;
     private bool _initialized = false;
+    private bool _isPaused = false;
 
     private Systems _commonSystems;
     private static InitializeFeature _initializeFeature;
@@ -71,6 +72,7 @@ public class GameController : MonoBehaviour
 
     private void OnPauseButtonClicked()
     {
+        _isPaused = true;
         _mainMenu.SetActive(true);
     }
 
@@ -87,11 +89,14 @@ public class GameController : MonoBehaviour
             _commonSystems.Initialize();
             _initialized = true;
         }
+
+        if (_isPaused)
+            _isPaused = false;
     }
 
     private void Update()
     {
-        if (!_initialized) return;
+        if (!_initialized || _isPaused) return;
         
         
         switch (_contexts.game.gameState.Value)
