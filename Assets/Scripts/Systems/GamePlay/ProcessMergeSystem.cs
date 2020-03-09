@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public class BubbleMergeSystem : ReactiveSystem<GameEntity>
+public class ProcessMergeSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _gameContext;
     
-    public BubbleMergeSystem(Contexts contexts) : base(contexts.game)
+    public ProcessMergeSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }

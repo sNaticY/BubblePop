@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public class BubbleCheckMergeSystem : ReactiveSystem<GameEntity>
+public class CheckMergeSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _gameContext;
     
-    public BubbleCheckMergeSystem(Contexts contexts) : base(contexts.game)
+    public CheckMergeSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }

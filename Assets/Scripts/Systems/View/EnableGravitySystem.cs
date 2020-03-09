@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public class RenderDropDownSystem : ReactiveSystem<GameEntity>
+public class EnableGravitySystem : ReactiveSystem<GameEntity>
 {
     private GameContext _gameContext;
     
-    public RenderDropDownSystem(Contexts contexts) : base(contexts.game)
+    public EnableGravitySystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }

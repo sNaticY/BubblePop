@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using Entitas;
 
-public class CreateBubbleInSlotSystem : ReactiveSystem<GameEntity>, ICleanupSystem
+public class CreateBubbleSystem : ReactiveSystem<GameEntity>, ICleanupSystem
 {
     private readonly GameContext _gameContext;
     
-    public CreateBubbleInSlotSystem(Contexts contexts) : base(contexts.game)
+    public CreateBubbleSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }

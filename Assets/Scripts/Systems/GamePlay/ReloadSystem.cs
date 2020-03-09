@@ -3,13 +3,13 @@ using Entitas;
 using UnityEngine;
 
 
-public class PrepareLaunchSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+public class ReloadSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
     private readonly GameContext _gameContext;
     private readonly RectTransform _launchPoint = GameObject.Find("Point_Origin").GetComponent<RectTransform>();
     private readonly RectTransform _nextLaunchPoint = GameObject.Find("Point_Next").GetComponent<RectTransform>();
 
-    public PrepareLaunchSystem(Contexts contexts) : base(contexts.game)
+    public ReloadSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }

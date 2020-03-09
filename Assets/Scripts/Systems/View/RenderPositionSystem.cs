@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class RenderPositionSystem : ReactiveSystem<GameEntity>
 {
-    private readonly Transform _launchPoint = GameObject.Find("Point_Origin").transform;
-    private readonly Transform _nextLaunchPoint = GameObject.Find("Point_Next").transform;
-
     public RenderPositionSystem(Contexts contexts) : base(contexts.game)
     {
     }

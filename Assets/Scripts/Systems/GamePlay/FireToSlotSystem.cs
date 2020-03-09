@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public class BubbleMoveToSlotSystem : ReactiveSystem<GameEntity>
+public class FireToSlotSystem : ReactiveSystem<GameEntity>
 {
-    public BubbleMoveToSlotSystem(Contexts contexts) : base(contexts.game)
+    public FireToSlotSystem(Contexts contexts) : base(contexts.game)
     {
     }
 

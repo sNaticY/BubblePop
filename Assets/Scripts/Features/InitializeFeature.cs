@@ -5,7 +5,7 @@ namespace Features
         public InitializeFeature(Contexts contexts) : base("Initialize Systems")
         {
             Add(new LoadSettingsSystem(contexts));
-            Add(new InitSlotBubblesSystem(contexts));
+            Add(new InitSlotSystem(contexts));
         }
     }
 }

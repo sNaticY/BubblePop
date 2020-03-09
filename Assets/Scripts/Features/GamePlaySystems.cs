@@ -4,11 +4,11 @@ public class GamePlaySystems : Feature
     {
         Add(new PredictBubbleSystem(contexts));
         
-        Add(new BubblePosToSlotSystem(contexts));
-        Add(new BubbleMoveToSlotSystem(contexts));
-        Add(new BubbleMoveToPosSystem(contexts));
+        Add(new ResetPositionToSlotSystem(contexts));
+        Add(new FireToSlotSystem(contexts));
+        Add(new MoveToPositionSystem(contexts));
         
-        Add(new CreateBubbleInSlotSystem(contexts));
+        Add(new CreateBubbleSystem(contexts));
         Add(new DestroyBubbleSystem(contexts));
 
         Add(new ProgressionSystem(contexts));

@@ -5,11 +5,11 @@ using Entitas;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShowProgressionViewSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+public class RenderProgressionSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
     private readonly GameContext _gameContext;
     
-    public ShowProgressionViewSystem(Contexts contexts) : base(contexts.game)
+    public RenderProgressionSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
     }

@@ -1,10 +1,10 @@
 using Entitas;
 using UnityEngine;
 
-public class InitSlotBubblesSystem : IInitializeSystem
+public class InitSlotSystem : IInitializeSystem
 {
     private readonly GameContext _gameContext;
-    public InitSlotBubblesSystem(Contexts contexts)
+    public InitSlotSystem(Contexts contexts)
     {
         _gameContext = contexts.game;
     }

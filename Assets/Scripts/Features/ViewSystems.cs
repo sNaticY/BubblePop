@@ -11,11 +11,11 @@ public class ViewSystems : Feature
         Add(new ColliderControlSystem(contexts));
         Add(new RenderPredictBubbleSystem(contexts));
         Add(new RenderLineViewSystem(contexts));
-        Add(new RenderDropDownSystem(contexts));
+        Add(new EnableGravitySystem(contexts));
         Add(new PlayAnimationSystem(contexts));
         Add(new RenderParticleSystem(contexts));
         Add(new ShowPerfectSystem(contexts));
         Add(new PlayAudioSystem(contexts));
-        Add(new ShowProgressionViewSystem(contexts));
+        Add(new RenderProgressionSystem(contexts));
     }
 }

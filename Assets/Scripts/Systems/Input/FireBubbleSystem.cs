@@ -41,9 +41,10 @@ public class FireBubbleSystem : ReactiveSystem<InputEntity>
             bubbleEntity.isWaitingForLaunch = false;
             
             _gameContext.CreateEntity().ReplacePlayAudio(AudioType.Transition);
+            _gameContext.ReplaceGameState(GameState.Flying);
         }
 
         _inputContext.ReplaceRayCollision(new Vector2Int(-1, -1), null, Vector2.zero, 0);
-        _gameContext.ReplaceGameState(GameState.Flying);
+        
     }
 }

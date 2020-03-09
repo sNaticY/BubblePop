@@ -1,13 +1,13 @@
 using Entitas;
 using UnityEngine;
 
-public class BubbleMoveToPosSystem : IExecuteSystem, ICleanupSystem
+public class MoveToPositionSystem : IExecuteSystem, ICleanupSystem
 {
     private readonly IGroup<GameEntity> _movableBubbles;
     private readonly IGroup<GameEntity> _completeMoveBubbles;
     private readonly GameContext _gameContext;
 
-    public BubbleMoveToPosSystem(Contexts contexts)
+    public MoveToPositionSystem(Contexts contexts)
     {
         _movableBubbles = contexts.game.GetGroup(GameMatcher.AnyOf(GameMatcher.BubbleTargetPos, GameMatcher.BubbleSecondTargetPos));
         _completeMoveBubbles = contexts.game.GetGroup(GameMatcher.CompleteMove);
