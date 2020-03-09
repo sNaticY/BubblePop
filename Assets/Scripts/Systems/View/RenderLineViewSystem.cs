@@ -7,8 +7,12 @@ using UnityEngine.UI.Extensions;
 public class RenderLineViewSystem : ReactiveSystem<InputEntity>, IInitializeSystem
 {
     private readonly GameContext _gameContext;
-    private readonly Vector2 _originPos = GameObject.Find("Point_Origin").transform.position;
-    
+
+    private readonly Vector2 _originPos =
+        GameObject.Find("Point_Origin").GetComponent<RectTransform>().anchoredPosition;
+
+    private readonly Vector2 _canvasScale = GameObject.Find("Canvas_Game").GetComponent<RectTransform>().localScale;
+
     public RenderLineViewSystem(Contexts contexts) : base(contexts.input)
     {
         _gameContext = contexts.game;
@@ -18,13 +22,13 @@ public class RenderLineViewSystem : ReactiveSystem<InputEntity>, IInitializeSyst
     {
         var line1 = GameObject.Find("Line_1").GetComponentInChildren<UILineRenderer>();
         line1.Points = new Vector2[] {_originPos, _originPos};
-        
+
         var line2 = GameObject.Find("Line_2").GetComponentInChildren<UILineRenderer>();
         line2.Points = new Vector2[] {Vector2.zero, Vector2.zero};
-        
+
         _gameContext.SetLineView(line1, line2);
     }
-    
+
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
         return context.CreateCollector(InputMatcher.RayCollision);
@@ -43,7 +47,9 @@ public class RenderLineViewSystem : ReactiveSystem<InputEntity>, IInitializeSyst
             {
                 if (entity.rayCollision.BoundPos == null)
                 {
-                    _gameContext.lineView.Line1.Points[1] = entity.rayCollision.CollisionPos;
+                    _gameContext.lineView.Line1.Points[1] =
+                        (entity.rayCollision.CollisionPos -
+                         (Vector2) _gameContext.lineView.Line1.gameObject.transform.position) / _canvasScale;
                     _gameContext.lineView.Line1.SetAllDirty();
                     _gameContext.lineView.Line2.Points[0] = Vector2.zero;
                     _gameContext.lineView.Line2.Points[1] = Vector2.zero;
@@ -51,10 +57,16 @@ public class RenderLineViewSystem : ReactiveSystem<InputEntity>, IInitializeSyst
                 }
                 else
                 {
-                    _gameContext.lineView.Line1.Points[1] = entity.rayCollision.BoundPos.Value;
+                    _gameContext.lineView.Line1.Points[1] =
+                        (entity.rayCollision.BoundPos.Value -
+                         (Vector2) _gameContext.lineView.Line1.gameObject.transform.position) / _canvasScale;
                     _gameContext.lineView.Line1.SetAllDirty();
-                    _gameContext.lineView.Line2.Points[0] = entity.rayCollision.BoundPos.Value;
-                    _gameContext.lineView.Line2.Points[1] = entity.rayCollision.CollisionPos;
+                    _gameContext.lineView.Line2.Points[0] =
+                        (entity.rayCollision.BoundPos.Value -
+                         (Vector2) _gameContext.lineView.Line2.gameObject.transform.position) / _canvasScale;
+                    _gameContext.lineView.Line2.Points[1] =
+                        (entity.rayCollision.CollisionPos -
+                         (Vector2) _gameContext.lineView.Line2.gameObject.transform.position) / _canvasScale;
                     _gameContext.lineView.Line2.SetAllDirty();
                 }
             }
