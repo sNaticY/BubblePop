@@ -15,7 +15,7 @@ MonoBehaviour:
   BubbleSize: 150
   BubbleLineSpace: 130
   BubblePrepareLaunchSpeed: 500
-  BubbleFlySpeed: 1500
+  BubbleFlySpeed: 2000
   BubbleMergeSpeed: 1800
   BubbleSettings:
   - {fileID: 11400000, guid: 1ec209c6c82d74d37b18e715bf26bfc5, type: 2}

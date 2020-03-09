@@ -6,6 +6,8 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem
     readonly InputContext _context;
     private InputEntity _leftMouseEntity;
 
+    private int _lastFrameTouchCount = 0;
+
     public EmitInputSystem(Contexts contexts)
     {
         _context = contexts.input;
@@ -29,6 +31,18 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem
         
         if (Input.GetMouseButtonUp(0))
             _leftMouseEntity.ReplaceMouseUp(Input.mousePosition);
+
+        if (Input.touches.Length > 0)
+        {
+            _lastFrameTouchCount = Input.touches.Length;
+            _leftMouseEntity.ReplaceMousePosition(Input.touches[0].position);
+        }
+
+        if (Input.touches.Length == 0 && _lastFrameTouchCount != 0)
+        {
+            _leftMouseEntity.ReplaceMouseUp(_leftMouseEntity.mousePosition.Position);
+            _lastFrameTouchCount = 0;
+        }
         
     }
 }
