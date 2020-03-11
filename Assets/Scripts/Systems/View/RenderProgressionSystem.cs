@@ -54,9 +54,14 @@ public class RenderProgressionSystem : ReactiveSystem<GameEntity>, IInitializeSy
     {
         var progressionSettings = _gameContext.settings.Value.Progression;
         var lastLevelScore = (level == 0 ? 0 : progressionSettings[level - 1]);
-        var totalAmount = progressionSettings[level] - lastLevelScore;
-        var fillAmount = score - lastLevelScore;
-        return fillAmount / (float)totalAmount;
+        if (progressionSettings.Count > level)
+        {
+            var totalAmount = progressionSettings[level] - lastLevelScore;
+            var fillAmount = score - lastLevelScore;
+            return fillAmount / (float)totalAmount;
+        }
+
+        return 1;
     }
 
 }

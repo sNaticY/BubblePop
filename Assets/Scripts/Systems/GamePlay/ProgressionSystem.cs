@@ -50,9 +50,10 @@ public class ProgressionSystem : ReactiveSystem<GameEntity>, IInitializeSystem, 
             score += entity.score.Value;
         }
 
-        if (level == _gameContext.settings.Value.Progression.Count - 1)
+        if (level >= _gameContext.settings.Value.Progression.Count - 1)
         {
-            score = Math.Min(score, _gameContext.settings.Value.Progression[level]);
+            var maxLevel = _gameContext.settings.Value.Progression.Count - 1;
+            score = Math.Min(score, _gameContext.settings.Value.Progression[maxLevel]);
         }
         else
         {

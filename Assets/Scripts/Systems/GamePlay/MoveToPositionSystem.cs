@@ -26,7 +26,7 @@ public class MoveToPositionSystem : IExecuteSystem, ICleanupSystem
                 e.ReplacePosition(newPosition);
 
                 var distance = dir.magnitude;
-                if (distance <= 20f)
+                if (distance <= 200f)
                 {
                     e.RemoveBubbleTargetPos();
                     if (!e.hasBubbleSecondTargetPos)
@@ -43,7 +43,7 @@ public class MoveToPositionSystem : IExecuteSystem, ICleanupSystem
                 e.ReplacePosition(newPosition);
 
                 var distance = dir.magnitude;
-                if (distance <= 20f)
+                if (distance <= 200f)
                 {
                     e.RemoveBubbleSecondTargetPos();
                     e.isCompleteMove = true;
